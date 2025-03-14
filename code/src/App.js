@@ -14,16 +14,6 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </div>
-
-      <div className="dash-button-container ">
-        <nav>
-          <ul>
-            <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/about">Workouts</Link></li>
-          </ul>
-        </nav>
-
-      </div>
     </Router>
   );
 }

@@ -12,3 +12,16 @@ h1 {
 p {
   font-size: 1.2rem;  
 }
+
+.dash-button-container { 
+  display: flex;
+  justify-content: center;
+}
+
+
+nav ul {
+  list-style-type: none;  
+  padding: 0;             
+  display: flex;          
+  gap: 20px;              
+}

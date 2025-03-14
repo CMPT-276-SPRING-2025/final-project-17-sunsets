@@ -1,10 +1,10 @@
 import React from 'react';
+import './Home.css'; 
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome to GetFit!</h1>
-      <p>This is the home page.</p>
+    <div className="home-container">
+      <h1>GitFit</h1>
     </div>
   );
 };

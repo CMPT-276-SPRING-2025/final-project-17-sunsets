@@ -25,3 +25,12 @@ nav ul {
   display: flex;          
   gap: 20px;              
 }
+
+
+.step-graph-container { 
+  display: flex;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  top: 50%
+}

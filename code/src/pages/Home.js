@@ -17,8 +17,8 @@ const Home = () => {
           </nav>
       
       </div>
-
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+      
+      <div className="step-graph-container">
         {}
         <SemicircleProgressBar value={65} text="Steps" /> 
   

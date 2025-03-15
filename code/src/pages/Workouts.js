@@ -1,12 +1,25 @@
 import React from 'react';
+import '.Workouts.css'
 
-const About = () => {
+
+const Workouts = () => {
   return (
-    <div>
-      <h1>About GetFit</h1>
-      <p>Learn more about our project.</p>
+    <div className="workoutsContainer">
+      <h1>GitFit</h1>
+
+      <div className="dashboardButtonContainer">
+        <nav>
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Workouts</a></li>
+            <li><a href="#">Nutrition</a></li>
+          </ul>
+        </nav>
+
+      </div>
+  
     </div>
   );
 };
 
-export default About;
+export default Workouts;

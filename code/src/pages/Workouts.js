@@ -15,8 +15,8 @@ const Workouts = () => {
         <nav>
           <ul>
             {/* Links to workout page and dashboard pages, needs styling and button components */}
-            <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/">Workouts</Link></li>
+            <li><Link to="/"><Button name="Dashboard"/></Link></li>
+            <li><Link to="/about"><Button name="Workouts"/></Link></li>
           </ul>
         </nav>
       </div>
@@ -29,10 +29,10 @@ const Workouts = () => {
 
       {/*Workouts Listings*/}
       <div className="workouts-list">
-        <h4>Name: Squats Target Musculature: Quads/Glutes</h4>
-        <p>Pendelum Squats Quads/Hamstrings/Glutes</p>
-        <p>Barbell Squats Quads/Hamstrings/Glutes</p>
-        <p>Leg Press Quads/Hamstrings/Glutes</p>
+        <h4>Name: Squats Target Musculature: Quads/Glutes </h4>
+        <p>Pendelum Squats Quads/Hamstrings/Glutes <Button name="Add Exercise"/></p>
+        <p>Barbell Squats Quads/Hamstrings/Glutes <Button name="Add Exercise"/></p>
+        <p>Leg Press Quads/Hamstrings/Glutes <Button name="Add Exercise"/></p>
 
       </div>
 

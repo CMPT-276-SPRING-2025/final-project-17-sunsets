@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css'; 
 import { Link } from 'react-router-dom';
 import SemicircleProgressBar from '../StepsGraph.js'; 
+import StepChart from "../StepsChart.js";
 
 const Home = () => {
   return (
@@ -18,10 +19,14 @@ const Home = () => {
       
       </div>
       
-      <div className="step-graph-container">
+      <div className="step-circle-container">
         {}
-        <SemicircleProgressBar value={65} text="Steps" /> 
-  
+        <SemicircleProgressBar goal={2000} text="Steps" /> 
+        {/*change steps and goal for steps input*/}
+      </div>
+      <div className="step-graph-container">
+        <h2>Weekly Steps</h2>
+        <StepChart />
       </div>
     </div>
     

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 const Workouts = () => {
   return (
     <div className="workoutsContainer">
-      <h1>GitFit</h1>
+      <h1 id="title">GitFit</h1>
       <hr></hr>
 
       <div className="dashboardButtonContainer">
@@ -26,7 +26,27 @@ const Workouts = () => {
         <SearchBar/>
       </div>
 
-  
+      {/*Workouts Listings*/}
+      <div className="workouts-list">
+        <h4>Name: Squats Target Musculature: Quads/Glutes</h4>
+        <p>Pendelum Squats Quads/Hamstrings/Glutes</p>
+        <p>Barbell Squats Quads/Hamstrings/Glutes</p>
+        <p>Leg Press Quads/Hamstrings/Glutes</p>
+
+      </div>
+
+      <br/>
+
+      {/*Current Workout Split*/}
+      <h4 id="current-split">Current Split</h4>
+      <div className="current-workout">
+        <p>Exercise 1 Sets/Reps</p>
+        <p>Exercise 2 Sets/Reps</p>
+        <p>Exercise 3 Sets/Reps</p>
+        <p>Exercise 4 Sets/Reps</p>
+        <hr/>
+        <br/>
+      </div>
     </div>
   );
 };

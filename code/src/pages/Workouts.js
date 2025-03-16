@@ -20,9 +20,11 @@ const Workouts = () => {
       </div>
       <hr></hr>
 
-      <p>
-        sample text
-      </p>
+      {/*Search Bar*/}
+      <div className="search-bar-container">
+        <div>SearchBar</div>
+        <div>SearchResults</div>
+      </div>
 
   
     </div>

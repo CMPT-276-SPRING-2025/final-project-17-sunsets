@@ -1,5 +1,5 @@
 import React from 'react';
-import '.Workouts.css'
+import './Workouts.css'
 
 
 const Workouts = () => {
@@ -10,9 +10,9 @@ const Workouts = () => {
       <div className="dashboardButtonContainer">
         <nav>
           <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Workouts</a></li>
-            <li><a href="#">Nutrition</a></li>
+            <li><a href="">Dashboard</a></li>
+            <li><a href="">Workouts</a></li>
+            <li><a href="">Nutrition</a></li>
           </ul>
         </nav>
 

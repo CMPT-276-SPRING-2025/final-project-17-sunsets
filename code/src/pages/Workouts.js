@@ -14,7 +14,6 @@ const Workouts = () => {
           <ul>
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/">Workouts</Link></li>
-            <li><a href="">Nutrition</a></li>
           </ul>
         </nav>
       </div>

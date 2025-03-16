@@ -2,6 +2,7 @@ import React from 'react';
 import './Workouts.css'
 import SearchBar from '../SearchBar';
 import { Link } from "react-router-dom"
+import Button from "../Button"
 
 
 const Workouts = () => {
@@ -40,12 +41,12 @@ const Workouts = () => {
       {/*Current Workout Split*/}
       <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
-        <p>Exercise 1 Sets/Reps</p>
-        <p>Exercise 2 Sets/Reps</p>
-        <p>Exercise 3 Sets/Reps</p>
-        <p>Exercise 4 Sets/Reps</p>
+        <p>Exercise 1 Sets/Reps <Button name="Remove"/></p>
+        <p>Exercise 2 Sets/Reps <Button name="Remove"/></p>
+        <p>Exercise 3 Sets/Reps <Button name="Remove"/></p>
+        <p>Exercise 4 Sets/Reps <Button name="Remove"/></p>
         <hr/>
-        <br/>
+        <Button name="Save Workout"/> <Button name="Reset"/>
       </div>
     </div>
   );

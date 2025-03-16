@@ -6,18 +6,15 @@ const Button = (props) => {
     {/* INLINE CSS to Style Button */}
     const styles = {
         backgroundColor: "black",
+        fontSize: "15px",
         color: "white",
-        padding: "10px, 20px",
+        padding: "10px 20px",
         borderRadius: "25px",
         border: "none",
         cursor: "pointer"
     }
 
-    return (
-        <div> 
-            <button style={styles}>{props.name}</button>
-        </div>
-    )
+    return (<button style={styles}>{props.name}</button>)
 }
 
 {/*Setting Property types */}

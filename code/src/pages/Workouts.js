@@ -1,5 +1,6 @@
 import React from 'react';
 import './Workouts.css'
+import { Link } from "react-router-dom"
 
 
 const Workouts = () => {
@@ -11,13 +12,17 @@ const Workouts = () => {
       <div className="dashboardButtonContainer">
         <nav>
           <ul>
-            <li><a href="">Dashboard</a></li>
-            <li><a href="">Workouts</a></li>
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/">Workouts</Link></li>
             <li><a href="">Nutrition</a></li>
           </ul>
         </nav>
       </div>
       <hr></hr>
+
+      <p>
+        sample text
+      </p>
 
   
     </div>

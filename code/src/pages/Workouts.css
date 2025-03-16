@@ -1,3 +1,8 @@
 .workoutsContainer {
     text-align: center;
 }
+
+.dashboardButtonContainer {
+    display: flex;
+    justify-content: center;
+}

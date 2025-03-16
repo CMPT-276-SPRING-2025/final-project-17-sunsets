@@ -6,6 +6,7 @@ const Workouts = () => {
   return (
     <div className="workoutsContainer">
       <h1>GitFit</h1>
+      <hr></hr>
 
       <div className="dashboardButtonContainer">
         <nav>
@@ -15,8 +16,9 @@ const Workouts = () => {
             <li><a href="">Nutrition</a></li>
           </ul>
         </nav>
-
       </div>
+      <hr></hr>
+
   
     </div>
   );

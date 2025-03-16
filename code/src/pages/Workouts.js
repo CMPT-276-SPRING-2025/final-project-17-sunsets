@@ -12,6 +12,7 @@ const Workouts = () => {
       <div className="dashboardButtonContainer">
         <nav>
           <ul>
+            {/* Links to workout page and dashboard pages, needs styling and button components */}
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/">Workouts</Link></li>
           </ul>

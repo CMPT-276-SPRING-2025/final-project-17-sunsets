@@ -1,5 +1,6 @@
 import React from 'react';
 import './Workouts.css'
+import SearchBar from '../SearchBar';
 import { Link } from "react-router-dom"
 
 
@@ -22,7 +23,7 @@ const Workouts = () => {
 
       {/*Search Bar*/}
       <div className="search-bar-container">
-        <div>SearchBar</div>
+        <SearchBar/>
         <div>SearchResults</div>
       </div>
 

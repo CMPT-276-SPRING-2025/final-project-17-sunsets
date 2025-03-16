@@ -23,7 +23,15 @@ const SemicircleProgressBar = ({goal, text }) => {
   };
 
   const setStepsHelper = () => {
-    setSteps(Number(inputValue));
+
+    const value = Number(inputValue);
+    if (value < 0) {
+      setSteps(0); 
+    } 
+    else {
+      setSteps(value); 
+    }
+  
   };
 
 

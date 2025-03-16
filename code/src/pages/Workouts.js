@@ -24,7 +24,6 @@ const Workouts = () => {
       {/*Search Bar*/}
       <div className="search-bar-container">
         <SearchBar/>
-        <div>SearchResults</div>
       </div>
 
   

@@ -14,7 +14,7 @@ input {
     height: 100%;
     font-size: 1.25rem;
     width: 100%;
-    margin-left: 60px;
+    text-align: center;
 }
 
 /*Remove outline when hovering over searchbar*/

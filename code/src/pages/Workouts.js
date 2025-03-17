@@ -29,10 +29,10 @@ const Workouts = () => {
 
       {/*Workouts Listings*/}
       <div className="workouts-list">
-        <h4>Name: Squats Target Musculature: Quads/Glutes </h4>
-        <p>Pendelum Squats Quads/Hamstrings/Glutes <Button name="Add Exercise"/></p>
-        <p>Barbell Squats Quads/Hamstrings/Glutes <Button name="Add Exercise"/></p>
-        <p>Leg Press Quads/Hamstrings/Glutes <Button name="Add Exercise"/></p>
+        <h4><span className= "exercise-name">Name: Squats </span> <span className="target">Target Musculature: Quads/Glutes </span></h4>
+        <p><span className= "exercise-name">Pendelum Squats</span> <span className="target">Quads/Hamstrings/Glutes</span> <Button name="Add Exercise"/></p>
+        <p><span className= "exercise-name">Barbell Squats </span> <span className="target">Quads/Hamstrings/Glutes</span> <Button name="Add Exercise"/></p>
+        <p><span className= "exercise-name">Leg Press</span>  <span className="target">Quads/Hamstrings/Glutes</span> <Button name="Add Exercise"/></p>
 
       </div>
 
@@ -41,10 +41,10 @@ const Workouts = () => {
       {/*Current Workout Split*/}
       <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
-        <p>Exercise 1 Sets/Reps <Button name="Remove"/></p>
-        <p>Exercise 2 Sets/Reps <Button name="Remove"/></p>
-        <p>Exercise 3 Sets/Reps <Button name="Remove"/></p>
-        <p>Exercise 4 Sets/Reps <Button name="Remove"/></p>
+        <p><span className='exercise'>Exercise 1</span> <span className='set'>Sets/Reps </span><Button name="Remove"/></p>
+        <p><span className='exercise'>Exercise 2 Sets/Reps </span><Button name="Remove"/></p>
+        <p><span className='exercise'>Exercise 3 </span><span className='set'>Sets/Reps</span> <Button name="Remove"/></p>
+        <p><span className='exercise'>Exercise 4 </span><span className='set'>Sets/Reps</span> <Button name="Remove"/></p>
         <hr/>
         <Button name="Save Workout"/> <Button name="Reset"/>
       </div>

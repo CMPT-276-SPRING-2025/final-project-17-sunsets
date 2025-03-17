@@ -42,12 +42,13 @@
     padding: 10px 0;
   }
 .workouts-list .exercise-name {
-    flex: 2; 
+    flex: 1; 
     text-align: left;
     padding-right: 10px;
     border-right: 2px solid black; 
 }
 .workouts-list h4 .target {
+    
     padding-right: 92px; 
 }
 
@@ -69,10 +70,34 @@
     margin: auto;
     text-align: center;
     display: block;
-    width: 450px;
+    width: 80%;
     height: fit-content;
     padding: 10px;
     background-color: #e6e6e6;
     border: 1px solid;
+}
+
+.current-workout p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.current-workout .exercise {
+    flex-grow: 1; /* Left aligned then mid and then right */
+    text-align: left;
+}
+
+.current-workout .set {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.current-workout button {
+    flex: 0 1 auto;  
+    margin-left: 10px;
+    max-width: 150px;  
 }
 

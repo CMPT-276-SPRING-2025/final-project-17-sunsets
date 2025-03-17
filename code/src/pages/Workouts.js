@@ -42,7 +42,7 @@ const Workouts = () => {
       <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
         <p><span className='exercise'>Exercise 1</span> <span className='set'>Sets/Reps </span><Button name="Remove"/></p>
-        <p><span className='exercise'>Exercise 2 Sets/Reps </span><Button name="Remove"/></p>
+        <p><span className='exercise'>Exercise 2</span> <span className='set'> Sets/Reps </span><Button name="Remove"/></p>
         <p><span className='exercise'>Exercise 3 </span><span className='set'>Sets/Reps</span> <Button name="Remove"/></p>
         <p><span className='exercise'>Exercise 4 </span><span className='set'>Sets/Reps</span> <Button name="Remove"/></p>
         <hr/>

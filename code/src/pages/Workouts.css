@@ -19,13 +19,48 @@
 
 .workouts-list {
     margin: auto;
-    text-align: center;
-    display: block;
-    width: fit-content;
-    height: fit-content;
     padding: 10px;
     background-color: #e6e6e6;
     border: 1px solid;
+    display: table;
+    width: 80%; 
+    margin-bottom: 20px;
+}
+.workouts-list h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
+  .workouts-list p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+  }
+.workouts-list .exercise-name {
+    flex: 1; 
+    text-align: left;
+    padding-right: 10px;
+    border-right: 2px solid black; 
+}
+.workouts-list h4 .target {
+    
+    padding-right: 92px; 
+}
+
+
+.workouts-list p button{
+    margin-left: 10px;
+}
+
+.workout-list p span{
+    border-right: 2px solid black;
+    padding-right: 10px;
+    margin-right: 10px;
 }
 #current-split {
     text-align: center;
@@ -35,9 +70,34 @@
     margin: auto;
     text-align: center;
     display: block;
-    width: 450px;
+    width: 80%;
     height: fit-content;
     padding: 10px;
     background-color: #e6e6e6;
     border: 1px solid;
 }
+
+.current-workout p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 5px 0;
+}
+
+.current-workout .exercise {
+    flex-grow: 1; /* Left aligned then mid and then right */
+    text-align: left;
+}
+
+.current-workout .set {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.current-workout button {
+    flex: 0 1 auto;  
+    margin-left: 10px;
+    max-width: 150px;  
+}
+

@@ -3,6 +3,7 @@ import React, { useState }  from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
+
 const SemicircleProgressBar = ({goal, text }) => {
   const [steps, setSteps] = useState(0);
   const [inputValue, setInputValue] = useState('');
@@ -20,6 +21,28 @@ const SemicircleProgressBar = ({goal, text }) => {
       fill: '#1f1a1a', 
       fontSize: '16px', 
     },
+  };
+
+  const buttonStyle = {
+    backgroundColor: "black",
+    fontSize: "15px",
+    color: "white",
+    padding: "0 20px",
+    borderRadius: "12px",
+    border: "none",
+    cursor: "pointer",
+    height: "40px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
+  const inputStyle = {
+    padding: "0 10px",
+    fontSize: "15px",
+    borderRadius: "12px",
+    border: "1px solid #ccc",
+    height: "40px",
   };
 
   const setStepsHelper = () => {
@@ -45,13 +68,14 @@ const SemicircleProgressBar = ({goal, text }) => {
         rotation={180}  
         circleRatio={1} /*change to 0.5 for semericle. I cant flip the semicircle the right way currently*/
       />
-      <div style={{ marginTop: '10px' }}>
-        <button onClick={setStepsHelper}>Enter Steps</button>
+      <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center' }}>
+        <button style={buttonStyle} onClick={setStepsHelper}>Enter Steps</button>
 
         <input
           type="number"
           value={inputValue} 
           onChange={(e) => setInputValue(e.target.value)}
+          style={inputStyle}
         />
       </div>
 

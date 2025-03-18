@@ -59,16 +59,21 @@ const SemicircleProgressBar = ({goal, text }) => {
 
 
   return (
-    <div style={{ width: '250px', height: '250px', margin: '20px', transformOrigin: 'center',}}>
-      <CircularProgressbar
-        value={value}
-        text={`${text} ${value}%`}
-        styles={style}
-        strokeWidth={10}
-        rotation={180}  
-        circleRatio={1} /*change to 0.5 for semericle. I cant flip the semicircle the right way currently*/
-      />
-      <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center' }}>
+    <div style={{ width: '120%', height: '250px', margin: '40px', transformOrigin: 'center',}}>
+      <div style={{ transform: 'rotate(270deg)', width: '100%', height: '100%' }}>
+          <CircularProgressbar
+            value={value}
+            styles={style}
+            strokeWidth={10}
+            circleRatio={0.5}
+          />
+        </div>
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <span style={{ fontSize: '16px', color: '#1f1a1a', fontWeight: 'bold', top: "3400px"}}>
+            {`${text} ${Math.round(value)}%`}
+          </span>
+        </div>
+      <div style={{ marginTop: '-78px', display: 'flex', alignItems: 'center' }}>
         <button style={buttonStyle} onClick={setStepsHelper}>Enter Steps</button>
 
         <input

@@ -29,13 +29,15 @@ nav ul {
   display: flex;
   justify-content: center;
   position: relative;
+  margin-left: -40px;
+  
 }
 
 .step-graph-container { 
   display: flex;
   justify-content: center;
   position: relative;
-  top: 10%;
+  top: 1%;
 }
 .step-graph-container {
   display: block;          

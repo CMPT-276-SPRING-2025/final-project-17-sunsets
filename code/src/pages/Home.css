@@ -42,10 +42,31 @@ nav ul {
 }
 
 #title {
-  text-align: center;
+    text-align: center;
+}
+
+.dashboardButtonContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .dashboardButtonContainer {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+.dashboardButtonContainer nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.dashboardButtonContainer nav ul li {
+  margin: 0 10px;
+}
+
+.dashboardButtonContainer nav ul li a {
+  text-decoration: none;
 }

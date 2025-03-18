@@ -3,20 +3,22 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import SemicircleProgressBar from '../StepsGraph.js'; 
 import StepChart from "../StepsChart.js";
+import Button from './Button';
+
 
 const Home = () => {
   return (
     <div className="home-container">
       <h1>GitFit</h1>
 
-      <div className="dash-button-container ">
-          <nav>
-            <ul>
-              <li><Link to="/">Dashboard</Link></li>
-              <li><Link to="/about">Workouts</Link></li>
-            </ul>
-          </nav>
-      
+      <div className="dashboardButtonContainer">
+        <nav>
+          <ul>
+            {/* Links to workout page and dashboard pages, needs styling and button components */}
+            <li><Link to="/"><Button name="Dashboard"/></Link></li>
+            <li><Link to="/about"><Button name="Workouts"/></Link></li>
+          </ul>
+        </nav>
       </div>
       
       <div className="step-circle-container">

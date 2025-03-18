@@ -41,3 +41,11 @@ nav ul {
   top: 10%;
 }
 
+#title {
+  text-align: center;
+}
+
+.dashboardButtonContainer {
+  display: flex;
+  justify-content: center;
+}

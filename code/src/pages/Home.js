@@ -1,10 +1,8 @@
 import React from 'react';
 import './Home.css'; 
-import { Link } from 'react-router-dom';
+import NavBar from './NavBar'; // <-- Import your NavBar
 import SemicircleProgressBar from '../StepsGraph.js'; 
 import StepChart from "../StepsChart.js";
-import Button from './Button';
-
 
 const Home = () => {
   return (
@@ -13,14 +11,11 @@ const Home = () => {
         <h1 id="title">GitFit</h1>
         <hr />
 
+        {/* Use the NavBar here */}
         <div className="dashboardButtonContainer">
-          <nav>
-            <ul>
-              <li><Link to="/"><Button name="Dashboard" /></Link></li>
-              <li><Link to="/about"><Button name="Workouts" /></Link></li>
-            </ul>
-          </nav>
+          <NavBar />
         </div>
+
         <hr />
       </div>
 

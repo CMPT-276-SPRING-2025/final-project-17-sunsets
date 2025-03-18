@@ -14,10 +14,7 @@ p {
   font-size: 1.2rem;  
 }
 
-.dash-button-container { 
-  display: flex;
-  justify-content: center;
-}
+
 
 
 nav ul {
@@ -39,6 +36,16 @@ nav ul {
   justify-content: center;
   position: relative;
   top: 10%;
+}
+.step-graph-container {
+  display: block;          
+  text-align: center;      
+  margin-top: 20px;        
+  width: 80%;
+}
+
+.step-graph-container h2 {
+  margin-bottom: 20px;     
 }
 
 #title {
@@ -63,10 +70,4 @@ nav ul {
   display: flex;
 }
 
-.dashboardButtonContainer nav ul li {
-  margin: 0 10px;
-}
 
-.dashboardButtonContainer nav ul li a {
-  text-decoration: none;
-}

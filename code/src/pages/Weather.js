@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Weather.css';
 import NavBar from './NavBar'; // <-- Import your NavBar
 
-const API_KEY = '25124b238c6dc448050f80e9d16ace91';
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 function Weather() {
   const [weather, setWeather] = useState(null);

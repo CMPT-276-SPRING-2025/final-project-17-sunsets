@@ -3,6 +3,7 @@ import './Workouts.css';
 import NavBar from './NavBar'; // <-- Import your NavBar component
 import SearchBar from '../SearchBar';
 import Button from "../Button";
+import Weather from './Weather';
 
 const Workouts = () => {
   return (

@@ -52,6 +52,8 @@ const SemicircleProgressBar = ({ goal, text }) => {
     } else {
       setSteps(prevSteps => prevSteps + value);
     }
+
+    setInputValue('');
   };
 
   return (

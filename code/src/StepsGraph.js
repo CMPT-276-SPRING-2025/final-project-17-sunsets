@@ -41,6 +41,7 @@ const SemicircleProgressBar = ({ goal, text }) => {
     borderRadius: "12px",
     border: "1px solid #ccc",
     height: "40px",
+    width: "80px",
     marginLeft: "10px", 
   };
 

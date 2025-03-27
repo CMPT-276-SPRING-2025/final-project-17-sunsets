@@ -3,6 +3,7 @@ import './Workouts.css';
 import NavBar from './NavBar'; // <-- Import your NavBar component
 import SearchBar from '../SearchBar';
 import Button from "../Button";
+import { SearchResultsList } from './SearchResultsList';
 
 const Workouts = () => {
 
@@ -22,6 +23,7 @@ const Workouts = () => {
       {/* Search Bar */}
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
+        <SearchResultsList results={results}/>
       </div>
 
       {/* Workouts Listings */}

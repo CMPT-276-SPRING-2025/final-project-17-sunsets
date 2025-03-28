@@ -9,7 +9,7 @@ export const getWeather = async (city = "New York") => {
       if (response.ok) {
         return {
           temperature: data.main.temp,
-          condition: data.weather[0].main.toLowerCase(), // e.g., "rain", "clear"
+          condition: data.weather[0].main.toLowerCase(), 
         };
       } else {
         console.error("Weather API error:", data.message);
@@ -20,4 +20,4 @@ export const getWeather = async (city = "New York") => {
       return null;
     }
   };
-  
+ 

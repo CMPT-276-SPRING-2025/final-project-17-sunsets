@@ -17,27 +17,27 @@ export const clothingOptions = {
       ["Puffer jacket", "Thermal pants", "Snow boots"],
       ["Insulated jacket", "Scarf", "Wool gloves"],
     ],
-    cloudy: [
+    clouds: [
       ["Light jacket", "Jeans", "Scarf"],
       ["Cardigan", "Trousers", "Boots"],
       ["Sweater", "Leggings", "Hat"],
     ],
-    windy: [
+    drizzle: [
       ["Windbreaker", "Tight pants", "Beanie"],
       ["Light jacket", "Cargo pants", "Gloves"],
       ["Hoodie", "Wind pants", "Cap"],
     ],
-    hot: [
+    haze: [
       ["Tank top", "Shorts", "Flip-flops"],
       ["T-shirt", "Swim trunks", "Sunglasses"],
       ["Short-sleeve shirt", "Board shorts", "Hat"],
     ],
-    cold: [
+    smoke: [
       ["Sweater", "Jeans", "Boots"],
       ["Long-sleeve shirt", "Corduroy pants", "Wool hat"],
       ["Thermal jacket", "Leggings", "Scarf"],
     ],
-    stormy: [
+    thunderstorm: [
       ["Rainproof jacket", "Heavy boots", "Hoodie"],
       ["Storm jacket", "Waterproof pants", "Rubber boots"],
       ["Windproof coat", "Hiking boots", "Thermal gloves"],
@@ -75,10 +75,12 @@ export const clothingOptions = {
   
     // Fetch exercises
     const exercises = await getWorkouts(workoutCategory);
+    
     let recommendedWorkout = "No suitable exercises found.";
     if (exercises.length > 0) {
       const randomIndex = Math.floor(Math.random() * exercises.length);
       recommendedWorkout = exercises[randomIndex].name;
+      console.log(recommendedWorkout);
     }
   
     // Get clothing recommendation

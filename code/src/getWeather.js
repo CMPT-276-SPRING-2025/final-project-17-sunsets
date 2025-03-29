@@ -8,6 +8,7 @@ export const getWeather = async (city = "New York") => {
       const data = await response.json();
   
       if (response.ok) {
+        console.log("this this", data.weather[0].main.toLowerCase());
         return {
           temperature: data.main.temp,
           condition: data.weather[0].main.toLowerCase(), 

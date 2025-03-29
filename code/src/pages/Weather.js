@@ -70,4 +70,17 @@ function Weather() {
   );
 }
 
+
+const weatherStyle = {
+  position: 'absolute',
+  top: '10px',
+  right: '10px',
+  fontSize: '18px',
+  fontWeight: 'bold',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  color: 'white',
+  padding: '5px 10px',
+  borderRadius: '5px',
+};
+
 export default Weather;

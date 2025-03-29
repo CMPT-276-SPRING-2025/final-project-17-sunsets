@@ -41,6 +41,7 @@ const SemicircleProgressBar = ({ goal, text }) => {
     borderRadius: "12px",
     border: "1px solid #ccc",
     height: "40px",
+    width: "80px",
     marginLeft: "10px", 
   };
 
@@ -49,8 +50,10 @@ const SemicircleProgressBar = ({ goal, text }) => {
     if (value < 0) {
       setSteps(0);
     } else {
-      setSteps(value);
+      setSteps(prevSteps => prevSteps + value);
     }
+
+    setInputValue('');
   };
 
   return (

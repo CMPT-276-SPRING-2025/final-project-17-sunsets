@@ -3,9 +3,19 @@ import './Workouts.css';
 import NavBar from './NavBar'; // <-- Import your NavBar component
 import SearchBar from '../SearchBar';
 import Button from "../Button";
+import { getRecommendations } from "../recommendation";
+
 
 const Workouts = () => {
+  //reccomendation functions
+  const [recommendation, setRecommendation] = useState(null);
+
+  const HandlerReccomendation = async () => { 
+    const result = await getRecommendations();
+    setRecommendation(result);
+  }
   return (
+    
     <div className="workoutsContainer">
       <h1 id="title">GitFit</h1>
       <hr />
@@ -71,6 +81,13 @@ const Workouts = () => {
         </p>
         <hr />
         <Button name="Save Workout" /> <Button name="Reset" />
+      </div>
+      <Button name="Recommendation Button" onClick={handlerRecommendation} /> 
+      <div>
+          <h3>Recommended Workout</h3>
+          <p><strong>Weather:</strong> {recommendation.weather}</p>
+          <p><strong>Workout:</strong> {recommendation.recommendedWorkout}</p>
+          <p><strong>Clothing:</strong> {recommendation.recommendedClothing.join(", ")}</p>
       </div>
     </div>
   );

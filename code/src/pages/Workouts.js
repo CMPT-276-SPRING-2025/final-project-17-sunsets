@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './Workouts.css';
-import NavBar from './NavBar'; // <-- Import your NavBar component
-import SearchBar from '../SearchBar';
-import Button from "../Button";
+import NavBar from './NavBar.js'; // <-- Import your NavBar component
+import SearchBar from '../SearchBar.js';
+import Button from "../Button.js";
 import { getRecommendations } from "../Reccomend.js";
 
 
@@ -11,10 +11,18 @@ const Workouts = () => {
   const [recommendation, setRecommendation] = useState(null);
 
   const handlerReccomendation = async () => { 
-    const result = await getRecommendations();
-    setRecommendation(result);
-  }
+   
+    try {
+      const result = await getRecommendations();
+      console.log(result);
+      setRecommendation(result);
+    } catch (error) {
+      console.error("Error fetching recommendation:", error);
+    }
+}
+
   return (
+    
     
     <div className="workoutsContainer">
       <h1 id="title">GitFit</h1>
@@ -82,12 +90,20 @@ const Workouts = () => {
         <hr />
         <Button name="Save Workout" /> <Button name="Reset" />
       </div>
-      <Button name="Recommendation Button" onClick={handlerReccomendation} /> 
-      <div>
-          <h3>Recommended Workout</h3>
-          <p><strong>Weather:</strong> {recommendation.weather}</p>
-          <p><strong>Workout:</strong> {recommendation.recommendedWorkout}</p>
-          <p><strong>Clothing:</strong> {recommendation.recommendedClothing.join(", ")}</p>
+      <Button name="Recommendation Buttoner" onClick={handlerReccomendation} /> 
+      <div className="reccomend">
+        <h3>Recommended Workout</h3>
+        {recommendation !== null && (
+          <>
+            <p><strong>Weather:</strong> {recommendation.weather}</p>
+            <p><strong>Workout:</strong> {recommendation.recommendedWorkout}</p>
+            <p><strong>Clothing:</strong> {recommendation.recommendedClothing.join(", ")}</p>
+          </>
+        )}
+
+        {recommendation === null && (
+          <p>Click the button above to get a recommendation.</p>
+        )}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import Workouts from './pages/Workouts';
-import Weather from './pages/Weather';
+import Home from './pages/Home.js';
+import Workouts from './pages/Workouts.js';
+import Weather from './pages/Weather.js';
 import './App.css'; 
 
 

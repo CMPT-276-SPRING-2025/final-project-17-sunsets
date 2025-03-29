@@ -21,3 +21,5 @@ export const getWorkouts = async () => {
       return null;
     }
   };
+
+  

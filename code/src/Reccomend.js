@@ -1,5 +1,5 @@
-import { getWeather } from './getWeather'; 
-import { getWorkouts } from './getWorkouts';
+import { getWeather } from './getWeather.js'; 
+import { getWorkouts } from './getWorkouts.js';
 
 export const clothingOptions = {
     clear: [

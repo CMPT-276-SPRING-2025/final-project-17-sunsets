@@ -1,7 +1,7 @@
 // NavBar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button'; // Adjust path if necessary
+import Button from './Button.js'; // Adjust path if necessary
 
 function NavBar() {
   return (

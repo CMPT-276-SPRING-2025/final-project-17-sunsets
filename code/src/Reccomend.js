@@ -1,3 +1,6 @@
+import { getWeather } from './getWeather'; 
+import { getWorkouts } from './getWorkouts';
+
 export const clothingOptions = {
     clear: [
       ["T-shirt", "Shorts", "Sunglasses"],
@@ -71,7 +74,7 @@ export const clothingOptions = {
     }
   
     // Fetch exercises
-    const exercises = await getExercisesByType(workoutCategory);
+    const exercises = await getWorkouts(workoutCategory);
     let recommendedWorkout = "No suitable exercises found.";
     if (exercises.length > 0) {
       const randomIndex = Math.floor(Math.random() * exercises.length);

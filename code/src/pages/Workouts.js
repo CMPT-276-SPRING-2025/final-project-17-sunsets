@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Workouts.css';
 import NavBar from './NavBar'; // <-- Import your NavBar component
 import SearchBar from '../SearchBar';
 import Button from "../Button";
-import { getRecommendations } from "../recommendation";
+import { getRecommendations } from "../Reccomend.js";
 
 
 const Workouts = () => {
   //reccomendation functions
   const [recommendation, setRecommendation] = useState(null);
 
-  const HandlerReccomendation = async () => { 
+  const handlerReccomendation = async () => { 
     const result = await getRecommendations();
     setRecommendation(result);
   }
@@ -82,7 +82,7 @@ const Workouts = () => {
         <hr />
         <Button name="Save Workout" /> <Button name="Reset" />
       </div>
-      <Button name="Recommendation Button" onClick={handlerRecommendation} /> 
+      <Button name="Recommendation Button" onClick={handlerReccomendation} /> 
       <div>
           <h3>Recommended Workout</h3>
           <p><strong>Weather:</strong> {recommendation.weather}</p>

@@ -15,12 +15,10 @@ const Workouts = () => {
       <h1 id="title">GitFit</h1>
       <hr />
 
-      {/* Reusable NavBar */}
       <div className="dashboardButtonContainer">
         <NavBar />
       </div>
       <hr />
-
       {/* Search Bar */}
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />

@@ -13,10 +13,10 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     min-width: 200px;
+    position: relative; /* Add this line */
 }
-
 .workouts-list {
     margin: auto;
     padding: 10px;
@@ -57,7 +57,7 @@
     margin-left: 10px;
 }
 
-.workout-list p span{
+.workouts-list p span{
     border-right: 2px solid black;
     padding-right: 10px;
     margin-right: 10px;

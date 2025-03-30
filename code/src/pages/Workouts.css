@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: stretch;
     min-width: 200px;
-    position: relative; /* Add this line */
+    position: relative;
 }
 .workouts-list {
     margin: auto;
@@ -86,7 +86,7 @@
 }
 
 .current-workout .exercise {
-    flex-grow: 1; /* Left aligned then mid and then right */
+    flex-grow: 1; 
     text-align: left;
 }
 

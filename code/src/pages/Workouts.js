@@ -90,21 +90,23 @@ const Workouts = () => {
         <hr />
         <Button name="Save Workout" /> <Button name="Reset" />
       </div>
-      <Button name="Recommendation Buttoner" onClick={handlerReccomendation} /> 
       <div className="reccomend">
-        <h3>Recommended Workout</h3>
-        {recommendation !== null && (
-          <>
+      <button onClick={handlerReccomendation} class="reccomend_button">Get New Recommendation</button>
+    <h3>Recommended Workout</h3>
+    {recommendation !== null && (
+        <>
             <p><strong>Weather:</strong> {recommendation.weather}</p>
             <p><strong>Workout:</strong> {recommendation.recommendedWorkout}</p>
             <p><strong>Clothing:</strong> {recommendation.recommendedClothing.join(", ")}</p>
-          </>
-        )}
+        </>
+    )}
 
-        {recommendation === null && (
-          <p>Click the button above to get a recommendation.</p>
-        )}
-      </div>
+    {recommendation === null && (
+        <p>Click the button above to get a recommendation.</p>
+    )}
+
+    
+  </div>
     </div>
   );
 };

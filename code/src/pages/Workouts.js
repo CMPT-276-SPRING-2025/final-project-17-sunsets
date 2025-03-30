@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Workouts.css';
 import NavBar from './NavBar'; // <-- Import your NavBar component
 import SearchBar from '../SearchBar';
 import Button from "../Button";
 import Weather from './Weather';
+import { SearchResultsList } from './SearchResultsList';
 
 const Workouts = () => {
+
+  const [results, setResults] = useState([]) // Hold results for Searchbar
+  
   return (
     <div className="workoutsContainer">
       <h1 id="title">GitFit</h1>
@@ -19,7 +23,8 @@ const Workouts = () => {
 
       {/* Search Bar */}
       <div className="search-bar-container">
-        <SearchBar />
+        <SearchBar setResults={setResults} />
+        <SearchResultsList results={results}/>
       </div>
 
       {/* Workouts Listings */}

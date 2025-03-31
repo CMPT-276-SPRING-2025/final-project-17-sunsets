@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Workouts.css';
-import NavBar from './NavBar'; // <-- Import your NavBar component
-import SearchBar from '../SearchBar';
-import Button from "../Button";
-import Weather from './Weather';
-import { SearchResultsList } from './SearchResultsList';
-import NavBar from './NavBar.js'; // <-- Import your NavBar component
+import NavBar from './NavBar.js'; // Import your NavBar component with extension
 import SearchBar from '../SearchBar.js';
 import Button from "../Button.js";
+import Weather from './Weather.js';
+import { SearchResultsList } from './SearchResultsList.js';
 import { getRecommendations } from "../Reccomend.js";
+
 
 
 const Workouts = () => {

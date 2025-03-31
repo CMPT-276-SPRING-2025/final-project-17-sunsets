@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'; 
-import NavBar from './NavBar'; // <-- Import your NavBar
+import NavBar from './NavBar.js'; // <-- Import your NavBar
 import SemicircleProgressBar from '../StepsGraph.js'; 
 import StepChart from "../StepsChart.js";
 

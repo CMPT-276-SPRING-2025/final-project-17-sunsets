@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Weather.css';
-import NavBar from './NavBar'; // <-- Import your NavBar
+import NavBar from './NavBar.js'; // <-- Import your NavBar
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 

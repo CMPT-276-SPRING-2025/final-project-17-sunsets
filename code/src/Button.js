@@ -1,7 +1,9 @@
 import React from "react-router-dom";
 import propTypes from 'prop-types'
 
+
 const Button = (props) => {
+    console.log("Button rendered"); 
 
     {/* INLINE CSS to Style Button */}
     const styles = {
@@ -14,17 +16,23 @@ const Button = (props) => {
         cursor: "pointer"
     }
 
-    return (<button style={styles}>{props.name}</button>)
+    return (
+        <button style={styles} onClick={props.onClick}>
+          {props.name}
+        </button>
+      );
 }
 
 {/*Setting Property types */}
 Button.propTypes = {
-    name: propTypes.string
-}
-
-{/*Setting Default Properties*/}
-Button.defaultProps = {
-    name: "Button"
-}
+    name: propTypes.string,
+    onClick: propTypes.func 
+  };
+  
+  // Setting Default Properties
+  Button.defaultProps = {
+    name: "Button",
+    onClick: () => {} 
+  };
 
 export default Button;

@@ -108,7 +108,7 @@ export const clothingOptions = {
     }
 };
 
-export const getRecommendations = async (city = "New York") => {
+export const getRecommendations = async (city = "Vancouver,BC,CA") => {
     const weather = await getWeather(city);
     if (!weather) return "Weather data unavailable. Try again later.";
 

@@ -84,7 +84,7 @@ if (lastUpdatedDay !== currentDay) {
     backgroundColor: "black",
     fontSize: "15px",
     color: "white",
-    padding: "0 20px",
+    padding: "0 24px",
     borderRadius: "12px",
     border: "none",
     cursor: "pointer",
@@ -92,7 +92,10 @@ if (lastUpdatedDay !== currentDay) {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    whiteSpace: "nowrap",     
+    minWidth: "200px",        
   };
+  
 
   const inputStyle = {
     padding: "0 10px",
@@ -100,8 +103,11 @@ if (lastUpdatedDay !== currentDay) {
     borderRadius: "12px",
     border: "1px solid #ccc",
     height: "40px",
-    marginLeft: "10px",
+    width: "80px",         
+    minWidth: "60px",      
+    marginRight: "10px",    
   };
+  
 
   return (
     <div style={{ width: '100%', height: '250px', margin: '40px', position: 'relative' }}>
@@ -127,7 +133,7 @@ if (lastUpdatedDay !== currentDay) {
           style={inputStyle}
         />
         <button style={buttonStyle} onClick={setStepsHelper}>
-          Add Steps for {currentDay}
+          Add steps to {currentDay}
         </button>
       </div>
     </div>

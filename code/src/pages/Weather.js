@@ -26,7 +26,7 @@ function Weather() {
       <form onSubmit={handleSubmit} className="search-bar-container">
         <input
           type="text"
-          placeholder="Enter city"
+          placeholder="Enter City (City ,Prov, Country)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="weather-input"

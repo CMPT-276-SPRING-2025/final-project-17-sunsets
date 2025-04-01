@@ -70,7 +70,6 @@ if (lastUpdatedDay !== currentDay) {
     weeklySteps[currentDay] = newSteps;
     localStorage.setItem('weeklySteps', JSON.stringify(weeklySteps));
     
-    // Optionally, clear the input after adding.
     setInputValue('');
   };
 

@@ -1,30 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Weather.css';
-import NavBar from './NavBar.js'; // <-- Import your NavBar
-
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+import NavBar from './NavBar.js'; 
+import { useWeatherCity } from '../WeatherCity.js';
 
 function Weather() {
-  const [weather, setWeather] = useState(null);
-  const [error, setError] = useState(null);
-  const [city, setCity] = useState('Vancouver');
+  const { city, setCity, weather, error, isLoading } = useWeatherCity();
   const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    setWeather(null);
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch weather data');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setWeather(data);
-        setError(null);
-      })
-      .catch(err => setError(err.message));
-  }, [city]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,8 +16,7 @@ function Weather() {
   };
 
   return (
-    <div>
-      {/* Reuse the NavBar here */}
+    <div className="weather-page">
       <div className="dashboardButtonContainer">
         <NavBar />
       </div>
@@ -57,9 +37,9 @@ function Weather() {
       </form>
 
       {error && <div className="error-message">Error: {error}</div>}
-      {!weather && !error && <div className="loading-message">Loading...</div>}
+      {isLoading && <div className="loading-message">Loading...</div>}
 
-      {weather && (
+      {weather && !isLoading && (
         <div className="weather-info-container">
           <h2>Weather in {weather.name}</h2>
           <p>Temperature: {weather.main.temp} °C</p>
@@ -69,18 +49,5 @@ function Weather() {
     </div>
   );
 }
-
-
-const weatherStyle = {
-  position: 'absolute',
-  top: '10px',
-  right: '10px',
-  fontSize: '18px',
-  fontWeight: 'bold',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  color: 'white',
-  padding: '5px 10px',
-  borderRadius: '5px',
-};
 
 export default Weather;

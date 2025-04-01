@@ -1,5 +1,4 @@
-import { getWeather } from './getWeather.js'; 
-import { getWorkouts } from './getWorkouts.js';
+import { useWeatherCity } from './WeatherCity.js';
 
 export const clothingOptions = {
     clear: [
@@ -44,29 +43,11 @@ export const clothingOptions = {
     ]
 };
 
-// Clothing recommendation with temperature awareness
-export const getClothingRecommendation = (condition, temperature) => {
-    const options = clothingOptions[condition] || [["Standard activewear"]];
-    let filtered = options;
-
-    if (temperature < 5) {
-        filtered = options.filter(set =>
-            set.some(item => /coat|jacket|thermal|boots|gloves|scarf|beanie|wool/i.test(item))
-        );
-    } else if (temperature >= 5 && temperature <= 15) {
-        filtered = options.filter(set =>
-            set.some(item => /long sleeve|sweater|light jacket|hoodie|jeans|trousers/i.test(item))
-        );
-    } else if (temperature > 25) {
-        filtered = options.filter(set =>
-            set.some(item => /tank|shorts|flip-flops|sunglasses/i.test(item))
-        );
-    }
-
-    if (filtered.length === 0) filtered = options;
-
-    const randomSetIndex = Math.floor(Math.random() * filtered.length);
-    return filtered[randomSetIndex];
+export const getClothingRecommendation = (weatherCondition) => {
+    const normalizedCondition = weatherCondition.toLowerCase();
+    const options = clothingOptions[normalizedCondition] || [["Standard activewear"]];
+    const randomSetIndex = Math.floor(Math.random() * options.length);
+    return options[randomSetIndex];
 };
 
 export const workoutMapping = [
@@ -76,76 +57,97 @@ export const workoutMapping = [
     { min: 26, max: 100, category: 15 }
 ];
 
-// Random API-based exercise fetch
-const getRandomExerciseName = async (category) => {
-    const API_KEY = process.env.REACT_APP_WGER_API_KEY;
+export const useRecommendations = () => {
+    const { weather, isLoading: weatherLoading, error: weatherError } = useWeatherCity();
 
-    try {
-        const exerciseResponse = await fetch(`https://wger.de/api/v2/exercise/?category=${category}&language=2`, {
-            headers: { 'Authorization': `Token ${API_KEY}` }
-        });
-        const exerciseData = await exerciseResponse.json();
+    const getRecommendations = async () => {
+        if (weatherLoading) return { message: "Loading weather data..." };
+        if (weatherError) return { message: `Weather error: ${weatherError}` };
+        if (!weather) return { message: "No weather data available." };
 
-        if (!exerciseResponse.ok || exerciseData.results.length === 0) {
-            return "No exercises found for this category.";
+        const temperature = weather.main?.temp;
+        const condition = weather.weather?.[0]?.main?.toLowerCase();
+
+        if (temperature === undefined || !condition) {
+            return { message: "Incomplete weather data." };
         }
 
-        const randomIndex = Math.floor(Math.random() * exerciseData.results.length);
-        const exerciseUUID = exerciseData.results[randomIndex].id;
+        const recommendedClothing = getClothingRecommendation(condition);
+        let recommendedWorkout = [];
+        let workoutEnvironment = "";
 
-        const translationResponse = await fetch(`https://wger.de/api/v2/exercise-translation/?exercise=${exerciseUUID}&language=2`, {
-            headers: { 'Authorization': `Token ${API_KEY}` }
-        });
-        const translationData = await translationResponse.json();
-
-        if (!translationResponse.ok) {
-            return "Error fetching exercise name.";
-        }
-
-        const translation = translationData.results.find(item => item.language === 2);
-        return translation?.name || "Exercise name unavailable.";
-
-    } catch (error) {
-        console.error("Error fetching workout data:", error);
-        return "Error fetching workouts.";
-    }
-};
-
-// 🚀 Main recommendation logic
-export const getRecommendations = async (city = "Vancouver,BC,CA") => {
-    const weather = await getWeather(city);
-    if (!weather) return "Weather data unavailable. Try again later.";
-
-    const { temperature, condition } = weather;
-    const recommendedClothing = getClothingRecommendation(condition, temperature);
-
-    let workoutSuggestion = "";
-    let workoutEnvironment = "";
-
-    if (temperature > 20) {
-        const outdoorActivities = ["Running", "Jogging", "Basketball", "Cycling", "Soccer", "Tennis", "Hiking"];
-        const randomActivity = outdoorActivities[Math.floor(Math.random() * outdoorActivities.length)];
-        workoutSuggestion = randomActivity;
-        workoutEnvironment = "Great weather for outdoor activities!";
-    } else {
-        // Use mapping and API to get workout
-        let workoutCategory = 8;
-        for (const range of workoutMapping) {
-            if (temperature >= range.min && temperature <= range.max) {
-                workoutCategory = range.category;
-                break;
+        if (temperature > 20) {
+            // Outdoor activity suggestion
+            const outdoorActivities = [
+                "Running", "Jogging", "Basketball", "Cycling", "Soccer", "Tennis", "Hiking"
+            ];
+            const randomIndex = Math.floor(Math.random() * outdoorActivities.length);
+            recommendedWorkout = [outdoorActivities[randomIndex]];
+            workoutEnvironment = "Great weather for outdoor activities!";
+        } else {
+            // Indoor: get 3 exercises from API
+            let workoutCategory = 8;
+            for (const range of workoutMapping) {
+                if (temperature >= range.min && temperature <= range.max) {
+                    workoutCategory = range.category;
+                    break;
+                }
             }
+
+            const API_KEY = process.env.REACT_APP_WGER_API_KEY;
+            try {
+                const response = await fetch(`https://wger.de/api/v2/exercise/?category=${workoutCategory}&language=2&limit=100`, {
+                    headers: { 'Authorization': `Token ${API_KEY}` }
+                });
+                const data = await response.json();
+
+                if (!response.ok || data.results.length === 0) {
+                    recommendedWorkout = ["No exercises found for this category."];
+                } else {
+                    const uniqueExercises = new Set();
+                    while (uniqueExercises.size < 3 && uniqueExercises.size < data.results.length) {
+                        const randomIndex = Math.floor(Math.random() * data.results.length);
+                        const exerciseId = data.results[randomIndex].id;
+
+                        const translationRes = await fetch(`https://wger.de/api/v2/exercise-translation/?exercise=${exerciseId}&language=2`, {
+                            headers: { 'Authorization': `Token ${API_KEY}` }
+                        });
+                        const translationData = await translationRes.json();
+                        const translation = translationData.results.find(item => item.language === 2);
+
+                        if (translation?.name) {
+                            uniqueExercises.add(translation.name);
+                        }
+                    }
+
+                    recommendedWorkout = Array.from(uniqueExercises);
+                }
+
+            } catch (error) {
+                console.error("Error fetching workouts:", error);
+                recommendedWorkout = ["Error fetching workouts."];
+            }
+
+            workoutEnvironment = ["rain", "snow", "thunderstorm", "drizzle"].includes(condition)
+                ? "Indoor workout recommended due to weather."
+                : "Outdoor activity possible, dress appropriately.";
         }
-        workoutSuggestion = await getRandomExerciseName(workoutCategory);
-        workoutEnvironment = ["rain", "snow", "thunderstorm", "drizzle"].includes(condition.toLowerCase())
-            ? "Indoor workout recommended due to weather."
-            : "Outdoor activity possible but consider conditions.";
-    }
+
+        return {
+            weather: `Temperature: ${Math.round(temperature)}°C, Condition: ${condition}`,
+            recommendedWorkout,
+            recommendedClothing, 
+            workoutEnvironment,
+            rawWeather: {
+                temperature,
+                condition
+            }
+        };
+    };
 
     return {
-        weather: `Temperature: ${temperature}°C, Condition: ${condition}`,
-        recommendedClothing,
-        recommendedWorkout: workoutSuggestion,
-        workoutEnvironment
+        getRecommendations,
+        isLoading: weatherLoading,
+        error: weatherError
     };
 };

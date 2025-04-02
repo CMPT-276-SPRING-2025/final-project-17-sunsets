@@ -9,7 +9,7 @@ const WelcomeModal = ({ onClose }) => {
 
         <div>
           <h3>1. Add your Info</h3>
-          <p>Navigate to the user icon on the left han site and enter your information their</p>
+          <p>Navigate to the user icon on the left hand side and enter your information their</p>
 
           <h3>2. Set Your Goals</h3>
           <p>In your profile section you can update the amount of steps you'd like to walk daily</p>

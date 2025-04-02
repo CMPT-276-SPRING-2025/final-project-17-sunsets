@@ -5,3 +5,6 @@ Project Name: GitFit
 Members: Aluse Zhou, Harman Bhogal, Gurjot Mahay, & Jagraj Gill
 
 Description: GitFit is a fitness app that offers users personalized workout plans and nutriton tracking. It allows users to monitor caloric intake and create workouts around there schedule. GitFit wants to make sure that your goals become reality.
+
+
+#HOW TO INSTALL

@@ -6,7 +6,7 @@ import Weather from './Weather.js';
 import { SearchResultsList } from './SearchResultsList.js';
 import { useRecommendations } from "../Reccomend.js";
 
-const MIN_EXERCISES = 4;
+const MIN_EXERCISES = 3;
 
 const createExercise = (num) => ({
   name: `Exercise ${num}`,

@@ -8,3 +8,5 @@ Description: GitFit is a fitness app that offers users personalized workout plan
 
 
 # HOW TO INSTALL
+Please clone the repo, once the repo is cloned please navigate/CD into the code folder and in your command line please run npm install.
+

@@ -15,7 +15,7 @@ const createExercise = (num) => ({
 });
 
 const normalizeExercise = (ex, index) => ({
-  name: ex.name || `Exercise ${index + 1}`,
+  name: `Exercise ${index + 1}`,
   sets: Number.isInteger(ex.sets) && ex.sets > 0 ? ex.sets : 1,
   reps: Number.isInteger(ex.reps) && ex.reps > 0 ? ex.reps : 1,
 });
@@ -45,15 +45,31 @@ const Workouts = () => {
 
   const handleRemove = (index) => {
     let updated = exercises.filter((_, i) => i !== index);
+
+    // Always maintain at least 4
     while (updated.length < MIN_EXERCISES) {
       updated.push(createExercise(updated.length + 1));
     }
+
+    // Renumber all exercises
+    updated = updated.map((ex, i) => ({
+      ...ex,
+      name: `Exercise ${i + 1}`,
+    }));
+
     setExercises(updated);
   };
 
   const handleAddExercise = () => {
     const newExercise = createExercise(exercises.length + 1);
-    setExercises([...exercises, newExercise]);
+    const updated = [...exercises, newExercise];
+
+    const renumbered = updated.map((ex, i) => ({
+      ...ex,
+      name: `Exercise ${i + 1}`,
+    }));
+
+    setExercises(renumbered);
   };
 
   const handleSave = () => {
@@ -117,7 +133,7 @@ const Workouts = () => {
               ))}
             </select>
             <button className="remove-button" onClick={() => handleRemove(index)}>✖</button>
-            </p>
+          </p>
         ))}
 
         <button className="main-button" onClick={handleAddExercise}>+ Add Exercise</button>

@@ -38,28 +38,7 @@ const Workouts = () => {
         <SearchResultsList results={results}/>
       </div>
 
-      {/* Workouts Listings */}
-      <div className="workouts-list">
-        <h4>
-          <span className="exercise-name">Name: Squats</span>
-          <span className="target">Target Musculature: Quads/Glutes</span>
-        </h4>
-        <p>
-          <span className="exercise-name">Pendelum Squats</span>
-          <span className="target">Quads/Hamstrings/Glutes</span>
-          <Button name="Add Exercise" />
-        </p>
-        <p>
-          <span className="exercise-name">Barbell Squats</span>
-          <span className="target">Quads/Hamstrings/Glutes</span>
-          <Button name="Add Exercise" />
-        </p>
-        <p>
-          <span className="exercise-name">Leg Press</span>
-          <span className="target">Quads/Hamstrings/Glutes</span>
-          <Button name="Add Exercise" />
-        </p>
-      </div>
+    
 
       <br />
 

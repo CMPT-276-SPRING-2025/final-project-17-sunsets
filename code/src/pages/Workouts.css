@@ -99,7 +99,7 @@
 }
 
 .current-workout .set {
-    flex-grow: 1;
+    margin-right: 10px;
     text-align: left;
 }
 

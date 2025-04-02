@@ -22,6 +22,8 @@ const Workouts = () => {
     }
   };
 
+
+
   return (
     <div className="workoutsContainer">
       <h1 id="title">GitFit</h1>
@@ -45,29 +47,73 @@ const Workouts = () => {
       {/* Current Workout Split */}
       <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
-        <p>
-          <span className="exercise">Exercise 1</span>
-          <span className="set">Sets/Reps</span>
-          <Button name="Remove" />
-        </p>
-        <p>
-          <span className="exercise">Exercise 2</span>
-          <span className="set">Sets/Reps</span>
-          <Button name="Remove" />
-        </p>
-        <p>
-          <span className="exercise">Exercise 3</span>
-          <span className="set">Sets/Reps</span>
-          <Button name="Remove" />
-        </p>
-        <p>
-          <span className="exercise">Exercise 4</span>
-          <span className="set">Sets/Reps</span>
-          <Button name="Remove" />
-        </p>
-        <hr />
-        <Button name="Save Workout" /> <Button name="Reset" />
-      </div>
+      <p>
+        <span className="exercise">Exercise 1</span>
+        <span className="set">Sets:      </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <span className="set">Reps:      </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <Button name="Remove" />
+      </p>
+      <p>
+        <span className="exercise">Exercise 2</span>
+        <span className="set">Sets: </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <span className="set">Reps:      </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <Button name="Remove" />
+      </p>
+      <p>
+        <span className="exercise">Exercise 3</span>
+        <span className="set">Sets: </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <span className="set">Reps:      </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <Button name="Remove" />
+      </p>
+      <p>
+        <span className="exercise">Exercise 4</span>
+        <span className="set">Sets: </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <span className="set">Reps:      </span>
+        <select className="set">
+          {[...Array(9)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{i + 1}</option>
+          ))}
+        </select>
+        <Button name="Remove" />
+      </p>
+      <hr />
+      <Button name="Save Workout" /> <Button name="Reset" />
+    </div>
 
       {/* Recommendation Section */}
       <div className="reccomend">

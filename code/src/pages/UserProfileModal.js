@@ -81,10 +81,11 @@ const UserProfileModal = ({ onClose }) => {
           />
         </label>
 
-        <div className="modal-buttons">
-          <button onClick={handleSave}>Save</button>
-          <button onClick={onClose}>Cancel</button>
+        <div className="modal-buttons" style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
+          <button className="main-button" onClick={handleSave}>Save</button>
+          <button className="main-button" onClick={onClose}>Cancel</button>
         </div>
+
       </div>
     </div>
   );

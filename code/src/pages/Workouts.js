@@ -100,6 +100,7 @@ const Workouts = () => {
       <div className="dashboardButtonContainer"><NavBar /></div>
       <hr />
 
+      {/* SEARCH BAR */}
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
         <SearchResultsList results={results} />
@@ -107,6 +108,7 @@ const Workouts = () => {
 
       <br />
 
+      {/* CURRENT SPLIT */}
       <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
         {exercises.map((exercise, index) => (
@@ -142,6 +144,7 @@ const Workouts = () => {
         <button className="main-button" onClick={handleReset}>Reset</button>
       </div>
 
+        {/* WORKOUT RECOMMENDATIONS*/}
       <div className="reccomend">
         <button
           onClick={handleRecommendation}

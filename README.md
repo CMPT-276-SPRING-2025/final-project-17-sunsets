@@ -7,6 +7,11 @@ Members: Aluse Zhou, Harman Bhogal, Gurjot Mahay, & Jagraj Gill
 Description: GitFit is a fitness app that offers users personalized workout plans and nutriton tracking. It allows users to monitor caloric intake and create workouts around there schedule. GitFit wants to make sure that your goals become reality.
 
 
-# HOW TO INSTALL
-Please clone the repo, once the repo is cloned please navigate/CD into the code folder and in your command line please run npm install.
+# 1. HOW TO INSTALL
+Please clone the repo, once the repo is cloned to your local machine please navigate/CD into the code folder and in your command line please run npm install. Once this is done you may move onto the next steps
+
+# 2. HOW TO RUN
+Once you have all your dependencies installed and your are in the code folder, please do npm start. This will start a local instance of the project. From here you can move onto the next step
+
+# 3. HOW TO USE
 

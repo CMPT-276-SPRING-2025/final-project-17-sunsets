@@ -21,7 +21,7 @@ const Home = () => {
 
       <div className="home-container">
         <div className="step-circle-container">
-          <SemicircleProgressBar goal={10000} text="Steps" />
+        <SemicircleProgressBar text="Steps" />
         </div>
         <div className="step-graph-container">
           <h2>Weekly Steps</h2>

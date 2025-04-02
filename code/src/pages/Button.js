@@ -5,7 +5,6 @@ import propTypes from 'prop-types'
 const Button = (props) => {
     console.log("Button rendered"); 
 
-    {/* INLINE CSS to Style Button */}
     const styles = {
         backgroundColor: "black",
         fontSize: "15px",
@@ -23,13 +22,11 @@ const Button = (props) => {
       );
 }
 
-{/*Setting Property types */}
 Button.propTypes = {
     name: propTypes.string,
     onClick: propTypes.func 
   };
   
-  // Setting Default Properties
   Button.defaultProps = {
     name: "Button",
     onClick: () => {} 

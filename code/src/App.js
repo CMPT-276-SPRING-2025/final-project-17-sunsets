@@ -5,7 +5,7 @@ import Workouts from './pages/Workouts.js';
 import Weather from './pages/Weather.js';
 import './App.css';
 import { WeatherCityProvider, useWeatherCity } from './WeatherCity.js'; 
-import WelcomeModal from './pages/WelcomeModal.js'; // NEW IMPORT
+import WelcomeModal from './pages/WelcomeModal.js';
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(false);

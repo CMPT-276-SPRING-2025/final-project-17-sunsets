@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'; 
-import NavBar from './NavBar.js'; // <-- Import your NavBar
+import NavBar from './NavBar.js'; 
 import SemicircleProgressBar from '../StepsGraph.js'; 
 import StepChart from "../StepsChart.js";
 
@@ -11,7 +11,6 @@ const Home = () => {
         <h1 id="title">GitFit</h1>
         <hr />
 
-        {/* Use the NavBar here */}
         <div className="dashboardButtonContainer">
           <NavBar />
         </div>

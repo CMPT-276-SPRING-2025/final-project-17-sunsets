@@ -46,7 +46,7 @@ const Workouts = () => {
   const handleRemove = (index) => {
     let updated = exercises.filter((_, i) => i !== index);
 
-    // Always maintain at least 4
+    // Always maintain at least 3
     while (updated.length < MIN_EXERCISES) {
       updated.push(createExercise(updated.length + 1));
     }

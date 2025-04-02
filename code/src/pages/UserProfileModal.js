@@ -23,6 +23,7 @@ const UserProfileModal = ({ onClose }) => {
     localStorage.setItem('userProfile', JSON.stringify(formData));
     localStorage.setItem('stepGoal', formData.stepGoal); // Sync step goal
     onClose();
+    window.location.reload();
   };
 
   return (

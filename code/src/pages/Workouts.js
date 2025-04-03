@@ -44,20 +44,24 @@ const Workouts = () => {
   };
 
   const handleRemove = (index) => {
-    let updated = exercises.filter((_, i) => i !== index);
+    setExercises((prevExercises) => {
+      //Remove selected exercise
+      let updated = prevExercises.filter((_,i) => i !== index)
 
-    // Always maintain at least 3
-    while (updated.length < MIN_EXERCISES) {
-      updated.push(createExercise(updated.length + 1));
-    }
+      //Ensure at least 3 exercises exist
+      while(updated.length < MIN_EXERCISES) {
+        updated.push(createExercise(updated.length + 1))
+      }
 
-    // Renumber all exercises
-    updated = updated.map((ex, i) => ({
-      ...ex,
-      name: `Exercise ${i + 1}`,
-    }));
+      //Keep selected exercises
+      updated = updated.map((ex,i) => ({
+        ...ex,
+        name: ex.name.startsWith("Exercise") ? `Exercise ${i + 1}` : ex.name,
+      }) )
+      return updated
+    })
 
-    setExercises(updated);
+    
   };
 
   const handleAddExercise = () => {

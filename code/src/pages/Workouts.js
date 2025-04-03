@@ -93,6 +93,19 @@ const Workouts = () => {
     }
   };
 
+  const updateExerciseName = (name) => {
+    setExercises((prevExercises) => {
+      const index = prevExercises.findIndex(ex => ex.name && ex.name.startsWith("Exercise"))
+
+      if (index === -1) return prevExercises
+
+      const updated = prevExercises.map((ex, i) =>
+      i === index ? {...ex, name: name || `Exercise ${i + 1}`} :ex)
+      return updated
+    })
+    
+  }
+
   return (
     <div className="workoutsContainer">
       <h1 id="title">GitFit</h1>
@@ -103,7 +116,7 @@ const Workouts = () => {
       {/* SEARCH BAR */}
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
-        <SearchResultsList results={results} />
+        <SearchResultsList results={results} updateExerciseName={updateExerciseName} />
       </div>
 
       <br />

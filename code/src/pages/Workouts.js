@@ -101,16 +101,16 @@ const Workouts = () => {
         <div className="dashboardButtonContainer"><NavBar /></div>
       </div>
 
-      <div className="search-bar-container">
-        <SearchBar setResults={setResults} />
-        <SearchResultsList results={results} />
-      </div>
 
       <br />
 
       
-      <h4 id="current-split">Current Split</h4>
+      <h2 id="current-split">Current Split</h2>
       <div className="current-workout">
+        <div className="search-bar-container">
+          <SearchBar setResults={setResults} />
+          <SearchResultsList results={results} />
+        </div>
         {exercises.map((exercise, index) => (
           <p key={index}>
             <span className="exercise">{exercise.name}</span>

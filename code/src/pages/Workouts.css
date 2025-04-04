@@ -128,3 +128,10 @@
     background-color: rgb(91, 94, 91);
   }
   
+
+  .workoutsContainer2 {
+    background-color: #f0f0f0;  
+    padding: 20px;             
+    border-radius: 10px;        
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  
+  }

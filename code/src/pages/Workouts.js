@@ -95,10 +95,11 @@ const Workouts = () => {
 
   return (
     <div className="workoutsContainer">
-      <h1 id="title">GitFit</h1>
-      <hr />
-      <div className="dashboardButtonContainer"><NavBar /></div>
-      <hr />
+      <div className="workoutsContainer2"> 
+        <h1 id="title">GitFit</h1>
+    
+        <div className="dashboardButtonContainer"><NavBar /></div>
+      </div>
 
       <div className="search-bar-container">
         <SearchBar setResults={setResults} />
@@ -107,6 +108,7 @@ const Workouts = () => {
 
       <br />
 
+      
       <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
         {exercises.map((exercise, index) => (

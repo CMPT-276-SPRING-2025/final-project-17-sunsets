@@ -39,15 +39,15 @@ function WeatherInfo() {
   const { weather, isLoading } = useWeatherCity();
 
   return (
-    <div className="temperature-display">
-      {isLoading ? (
-        <p>Loading weather...</p>
-      ) : weather ? (
-        <p>Currently: {weather.main.temp} °C in {weather.name}</p>
-      ) : (
-        <p>Weather data unavailable</p>
-      )}
-    </div>
+      <div className="temperature-display">
+        {isLoading ? (
+          <p>Loading weather...</p>
+        ) : weather ? (
+          <p>Currently: {weather.main.temp} °C in {weather.name}</p>
+        ) : (
+          <p>Weather data unavailable</p>
+        )}
+      </div>
   );
 }
 

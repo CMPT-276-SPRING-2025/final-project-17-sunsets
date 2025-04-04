@@ -17,11 +17,13 @@ function Weather() {
 
   return (
     <div className="weather-page">
-      <div className="dashboardButtonContainer">
-        <NavBar />
+      <div className="workoutsContainer2"> 
+        <h1 id="title">GitFit</h1>
+    
+        <div className="dashboardButtonContainer"><NavBar /></div>
       </div>
 
-      <h1 id="title">Weather App</h1>
+
       
       <form onSubmit={handleSubmit} className="search-bar-container">
         <input

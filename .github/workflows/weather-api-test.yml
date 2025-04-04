@@ -24,19 +24,15 @@ jobs:
       - name: Run Weather API Test
         run: |
           node --input-type=module -e "
-            const getWeather = (await import('./src/getWeather.js')).default;
-            const cities = ['New York', 'Tokyo', 'Paris', 'Cairo'];
+            const { getWeather } = await import('./src/getWeather.js');
             process.env.REACT_APP_WEATHER_API_KEY = '${{ secrets.REACT_APP_WEATHER_API_KEY }}';
-            Promise.all(cities.map(city => getWeather(city)))
-              .then(results => {
-                results.forEach((res, idx) => {
-                  if (!res || !res.weather) throw new Error('No weather data for ' + cities[idx]);
-                });
-                console.log('✅ Weather API passed for all cities');
-              })
-              .catch(err => {
-                console.error(err);
-                process.exit(1);
-              });
+            const cities = ['New York', 'Tokyo', 'Paris', 'Cairo'];
+            const results = await Promise.all(cities.map(getWeather));
+            results.forEach((res, i) => {
+              if (!res || !res.condition || !res.temperature) {
+                throw new Error('❌ Missing weather data for ' + cities[i]);
+              }
+            });
+            console.log('✅ Weather API returned valid results for all cities.');
           "
         working-directory: ./code

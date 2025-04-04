@@ -95,20 +95,22 @@ const Workouts = () => {
 
   return (
     <div className="workoutsContainer">
-      <h1 id="title">GitFit</h1>
-      <hr />
-      <div className="dashboardButtonContainer"><NavBar /></div>
-      <hr />
-
-      <div className="search-bar-container">
-        <SearchBar setResults={setResults} />
-        <SearchResultsList results={results} />
+      <div className="workoutsContainer2"> 
+        <h1 id="title">GitFit</h1>
+    
+        <div className="dashboardButtonContainer"><NavBar /></div>
       </div>
+
 
       <br />
 
-      <h4 id="current-split">Current Split</h4>
+      
+      <h2 id="current-split">Current Split</h2>
       <div className="current-workout">
+        <div className="search-bar-container">
+          <SearchBar setResults={setResults} />
+          <SearchResultsList results={results} />
+        </div>
         {exercises.map((exercise, index) => (
           <p key={index}>
             <span className="exercise">{exercise.name}</span>
@@ -128,7 +130,7 @@ const Workouts = () => {
               value={exercise.reps}
               onChange={(e) => handleChange(index, 'reps', e.target.value)}
             >
-              {[...Array(9)].map((_, i) => (
+              {[...Array(30)].map((_, i) => (
                 <option key={i + 1} value={i + 1}>{i + 1}</option>
               ))}
             </select>

@@ -16,17 +16,23 @@ function Weather() {
   };
 
   return (
-    <div className="weather-page">
-      <div className="dashboardButtonContainer">
-        <NavBar />
-      </div>
 
-      <h1 id="title">Weather App</h1>
+    
+    <div className="weather-page">
+
+      <div className="workoutsContainer2"> 
+        <h1 id="title">GitFit</h1>
+    
+        <div className="dashboardButtonContainer"><NavBar /></div>
+      </div>
+      
+
+
       
       <form onSubmit={handleSubmit} className="search-bar-container">
         <input
           type="text"
-          placeholder="Enter City (City ,Prov/State, Country)"
+          placeholder="Enter City (City, Prov/State, Country)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="weather-input"
@@ -36,7 +42,7 @@ function Weather() {
         </button>
       </form>
 
-      {error && <div className="error-message">Error: {error}</div>}
+      {error && <div className="error-message">Error: {error}. Please enter a valid location with the provided format.</div>}
       {isLoading && <div className="loading-message">Loading...</div>}
 
       {weather && !isLoading && (

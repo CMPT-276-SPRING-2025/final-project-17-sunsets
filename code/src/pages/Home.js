@@ -7,20 +7,20 @@ import StepChart from "../StepsChart.js";
 const Home = () => {
   return (
     <>
-      <div className="workoutsContainer">
+      <div className="workoutsContainer2">
         <h1 id="title">GitFit</h1>
-        <hr />
+
 
         <div className="dashboardButtonContainer">
           <NavBar />
         </div>
 
-        <hr />
+    
       </div>
 
       <div className="home-container">
         <div className="step-circle-container">
-        <SemicircleProgressBar text="Steps" />
+          <SemicircleProgressBar text="Steps:" />
         </div>
         <div className="step-graph-container">
           <h2>Weekly Steps</h2>

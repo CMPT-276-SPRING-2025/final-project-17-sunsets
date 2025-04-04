@@ -53,5 +53,7 @@ nav ul {
 
 .temperature-display { 
   display: flex;
-  justify-content: right;
+  position: absolute; 
+  left: 85%;
+  top: 14%;
 }

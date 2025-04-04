@@ -51,8 +51,8 @@ const SemicircleProgressBar = ({ text }) => {
   // Step update handler
   const setStepsHelper = () => {
     const additionalSteps = Number(inputValue);
-    const validAdditionalSteps = additionalSteps < 0 ? 0 : additionalSteps;
-    const newSteps = steps + validAdditionalSteps;
+  
+    const newSteps = Math.max(steps + additionalSteps, 0);
     setSteps(newSteps);
 
     const storedWeekly = localStorage.getItem('weeklySteps');
@@ -111,18 +111,18 @@ const SemicircleProgressBar = ({ text }) => {
       <div style={{
         position: 'absolute',
         top: '50%',
-        left: '50%',
+        left: '58%',
         transform: 'translate(-50%, -50%)',
         zIndex: 1
       }}>
         <span style={{ fontSize: '16px', color: '#1f1a1a', fontWeight: 'bold' }}>
-          {text} {Math.round(value)}%
+          {text} {steps}
         </span>
       </div>
       <div style={{
         position: 'absolute',
         bottom: '20px',
-        left: '50%',
+        left: '60%',
         transform: 'translateX(-50%)',
         zIndex: 1,
         display: 'flex',

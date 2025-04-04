@@ -23,8 +23,8 @@ jobs:
 
       - name: Run Weather API Test
         run: |
-          node -e "
-            const getWeather = require('./src/getWeather');
+          node --input-type=module -e "
+            const getWeather = (await import('./src/getWeather.js')).default;
             const cities = ['New York', 'Tokyo', 'Paris', 'Cairo'];
             process.env.REACT_APP_WEATHER_API_KEY = '${{ secrets.REACT_APP_WEATHER_API_KEY }}';
             Promise.all(cities.map(city => getWeather(city)))

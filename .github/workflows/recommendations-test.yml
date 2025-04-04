@@ -23,9 +23,9 @@ jobs:
 
       - name: Run Recommendation Logic Test
         run: |
-          node -e "
-            const getWeather = require('./src/getWeather');
-            const getRecommendations = require('./src/useRecommendations');
+          node --input-type=module -e "
+            const getWeather = (await import('./src/getWeather.js')).default;
+            const getRecommendations = (await import('./src/useRecommendations.js')).default;
             process.env.REACT_APP_WEATHER_API_KEY = '${{ secrets.REACT_APP_WEATHER_API_KEY }}';
             getWeather('London').then(data => {
               const recs = getRecommendations(data);

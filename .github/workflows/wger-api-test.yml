@@ -23,8 +23,8 @@ jobs:
 
       - name: Run Wger API Test
         run: |
-          node -e "
-            const getWorkouts = require('./src/getWorkouts');
+          node --input-type=module -e "
+            const getWorkouts = (await import('./src/getWorkouts.js')).default;
             process.env.REACT_APP_WGER_API_KEY = '${{ secrets.REACT_APP_WGER_API_KEY }}';
             getWorkouts('arms').then(data => {
               if (!Array.isArray(data) || data.length === 0) throw new Error('❌ No workouts returned');

@@ -1,6 +1,10 @@
 #title {
     text-align: center;
   }
+
+  body {
+    overflow-y: scroll;
+  }
   
   .dashboardButtonContainer {
     display: flex;

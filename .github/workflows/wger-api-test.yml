@@ -19,6 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./code
 
       - name: Run Wger API Test
         run: |
@@ -33,3 +34,4 @@ jobs:
               process.exit(1);
             });
           "
+        working-directory: ./code

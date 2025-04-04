@@ -1,0 +1,35 @@
+name: Wger API Test
+
+on: [push, pull_request]
+
+jobs:
+  test-wger-api:
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_WGER_API_KEY: ${{ secrets.REACT_APP_WGER_API_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Wger API Test
+        run: |
+          node -e "
+            const getWorkouts = require('./src/getWorkouts');
+            process.env.REACT_APP_WGER_API_KEY = '${{ secrets.REACT_APP_WGER_API_KEY }}';
+            getWorkouts('arms').then(data => {
+              if (!Array.isArray(data) || data.length === 0) throw new Error('❌ No workouts returned');
+              console.log('✅ Wger API returned valid exercises');
+            }).catch(err => {
+              console.error(err);
+              process.exit(1);
+            });
+          "

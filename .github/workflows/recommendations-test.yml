@@ -1,0 +1,37 @@
+name: Recommendations Based on Weather
+
+on: [push, pull_request]
+
+jobs:
+  test-recommendations:
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Recommendation Logic Test
+        run: |
+          node -e "
+            const getWeather = require('./src/getWeather');
+            const getRecommendations = require('./src/useRecommendations');
+            process.env.REACT_APP_WEATHER_API_KEY = '${{ secrets.REACT_APP_WEATHER_API_KEY }}';
+            getWeather('London').then(data => {
+              const recs = getRecommendations(data);
+              if (!Array.isArray(recs) || recs.length === 0) throw new Error('❌ No recommendations returned');
+              console.log('✅ Recommendations generated based on weather');
+            }).catch(err => {
+              console.error(err);
+              process.exit(1);
+            });
+          "

@@ -36,7 +36,7 @@ function Weather() {
         </button>
       </form>
 
-      {error && <div className="error-message">Error: {error}</div>}
+      {error && <div className="error-message">Error: {error}. Please enter a valid location with the provided format.</div>}
       {isLoading && <div className="loading-message">Loading...</div>}
 
       {weather && !isLoading && (

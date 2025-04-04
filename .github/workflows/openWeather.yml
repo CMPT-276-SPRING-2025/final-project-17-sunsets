@@ -1,0 +1,58 @@
+name: open weather API
+
+on:
+  push: 
+
+jobs:
+  plan-workout:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      name: Checkout repository
+      uses: actions/checkout@v2
+
+
+      name: weather search
+      steps:
+
+        WEATHER_DATA=$(curl -s "http://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${WEATHER_API_KEY}&units=metric")
+        TEMPERATURE=$(echo $WEATHER_DATA | jq '.main.temp')
+        
+        if [ -z "$TEMPERATURE" ]; then
+            echo "Weather API test failed: Temperature not found!"
+            exit 1
+        else
+            echo "Weather API test passed: Temperature is $TEMPERATURE°C"
+        fi
+
+      name: gear reccomendation 
+      steps:
+
+        CONDITION=${{ steps.weather.outputs.condition }}
+
+        if [[ "$CONDITION" == "clear" ]]; then
+            RECOMMENDATION="T-shirt", Shorts, Sunglasses"
+
+        if [ -z "$RECOMMENDATION" ]; then
+            echo "Gear Recommendation test failed!"
+            exit 1
+        else
+            echo "Gear Recommendation test passed!"
+        fi
+
+
+      name: motivational message
+      steps: 
+
+        
+        MESSAGES=("You got this!")
+  
+          
+          
+        if [[ ! " ${MESSAGES[@]} " =~ " ${RANDOM_MESSAGE} " ]]; then
+          echo "Motivational Message test failed!"
+          exit 1
+        else
+          echo "Motivational Message test passed!"
+        fi

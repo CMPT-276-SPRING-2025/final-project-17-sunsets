@@ -43,7 +43,7 @@ function WeatherInfo() {
       {isLoading ? (
         <p>Loading weather...</p>
       ) : weather ? (
-        <p>Current: {weather.main.temp} °C in {weather.name}</p>
+        <p>Currently: {weather.main.temp} °C in {weather.name}</p>
       ) : (
         <p>Weather data unavailable</p>
       )}

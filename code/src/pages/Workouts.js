@@ -15,7 +15,7 @@ const createExercise = (num) => ({
 });
 
 const normalizeExercise = (ex, index) => ({
-  name: `Exercise ${index + 1}`,
+  name: ex.name || `Exercise ${index + 1}`,
   sets: Number.isInteger(ex.sets) && ex.sets > 0 ? ex.sets : 1,
   reps: Number.isInteger(ex.reps) && ex.reps > 0 ? ex.reps : 1,
 });
@@ -44,37 +44,47 @@ const Workouts = () => {
   };
 
   const handleRemove = (index) => {
-    let updated = exercises.filter((_, i) => i !== index);
+    setExercises((prevExercises) => {
+      //Remove selected exercise
+      let updated = prevExercises.filter((_,i) => i !== index)
 
-    // Always maintain at least 3
-    while (updated.length < MIN_EXERCISES) {
-      updated.push(createExercise(updated.length + 1));
-    }
+      //Ensure at least 3 exercises exist
+      while(updated.length < MIN_EXERCISES) {
+        updated.push(createExercise(updated.length + 1))
+      }
 
-    // Renumber all exercises
-    updated = updated.map((ex, i) => ({
-      ...ex,
-      name: `Exercise ${i + 1}`,
-    }));
+      //Keep selected exercises
+      updated = updated.map((ex,i) => ({
+        ...ex,
+        name: ex.name.startsWith("Exercise") ? `Exercise ${i + 1}` : ex.name,
+      }) )
+      return updated
+    })
 
-    setExercises(updated);
+    
   };
 
   const handleAddExercise = () => {
-    const newExercise = createExercise(exercises.length + 1);
-    const updated = [...exercises, newExercise];
+    const newExercise = {
+      name: `Exercise ${exercises.length + 1}`,
+      sets: 1,
+      reps: 1,
+    }
 
-    const renumbered = updated.map((ex, i) => ({
+    const updated = [...exercises, newExercise]
+
+    //Only renumber default exercises
+    const cleaned = updated.map((ex,i) => ({
       ...ex,
-      name: `Exercise ${i + 1}`,
-    }));
+      name: ex.name?.startsWith("Exercise") ? `Exercise ${i + 1}` : ex.name
+    }))
 
-    setExercises(renumbered);
+    setExercises(cleaned)
   };
 
   const handleSave = () => {
     const cleaned = exercises.map(normalizeExercise);
-    localStorage.setItem('exercises', JSON.stringify(cleaned));
+    localStorage.setItem('exercises', JSON.stringify(exercises));
     alert('Workout saved!');
   };
 
@@ -93,19 +103,37 @@ const Workouts = () => {
     }
   };
 
+  const updateExerciseName = (name) => {
+    setExercises((prevExercises) => {
+      const index = prevExercises.findIndex(ex => ex.name && ex.name.startsWith("Exercise"))
+
+      if (index === -1) return prevExercises
+
+      const updated = prevExercises.map((ex, i) =>
+      i === index ? {...ex, name: name || `Exercise ${i + 1}`} :ex)
+      return updated
+    })
+    
+  }
+
   return (
     <div className="workoutsContainer">
-      <div className="workoutsContainer2"> 
-        <h1 id="title">GitFit</h1>
-    
-        <div className="dashboardButtonContainer"><NavBar /></div>
+      <h1 id="title">GitFit</h1>
+      <hr />
+      <div className="dashboardButtonContainer"><NavBar /></div>
+      <hr />
+
+      {/* SEARCH BAR */}
+      <div className="search-bar-container">
+        <SearchBar setResults={setResults} />
+        <SearchResultsList results={results} updateExerciseName={updateExerciseName} />
       </div>
 
 
       <br />
 
-      
-      <h2 id="current-split">Current Split</h2>
+      {/* CURRENT SPLIT */}
+      <h4 id="current-split">Current Split</h4>
       <div className="current-workout">
         <div className="search-bar-container">
           <SearchBar setResults={setResults} />
@@ -144,6 +172,7 @@ const Workouts = () => {
         <button className="main-button" onClick={handleReset}>Reset</button>
       </div>
 
+        {/* WORKOUT RECOMMENDATIONS*/}
       <div className="reccomend">
         <button
           onClick={handleRecommendation}

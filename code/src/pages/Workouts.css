@@ -16,17 +16,18 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .search-wrapper {
   position: relative;
   width: 100%;
   max-width: 500px;
   min-width: 250px;
-  margin: 30px auto 30px auto;
+  margin: 30px auto;
   z-index: 10;
 }
 
-
-.search-wrapper > div {
+/* Apply reset only to direct children that are not the results list */
+.search-wrapper > div:not(.results-list) {
   all: unset;
   display: flex;
   justify-content: center;
@@ -45,7 +46,6 @@
   background: none !important;
 }
 
-
 .search-wrapper * {
   box-shadow: none !important;
   outline: none !important;
@@ -63,22 +63,28 @@
   box-sizing: border-box;
 }
 
-
+/* By default, no border so an empty results list doesn't show a line */
 .results-list {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   background-color: white;
-  border: 1px solid #ccc;
-  border-top: none;
   max-height: 200px;
   overflow-y: auto;
   z-index: 99;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 5px 5px;
+  display: block;
 }
 
+/* Show the border only if there are actual results (i.e., the list isn't empty) */
+.results-list:not(:empty) {
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Ensure individual search results have top/bottom borders */
 .search-result:first-child {
   border-top: 1px solid #ccc;
 }
@@ -93,8 +99,6 @@
   margin-bottom: 10px;
   font-size: 1.2rem;
 }
-
-
 
 .current-workout {
   margin-top: 30px;

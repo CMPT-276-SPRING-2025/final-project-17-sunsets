@@ -1,141 +1,175 @@
 #title {
-    text-align: center;
-  }
+  text-align: center;
+}
 
-  body {
-    overflow-y: scroll;
-  }
-  
-  .dashboardButtonContainer {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .search-bar-container {
-    padding: 2vh;
-    width: 40%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-width: 200px;
-    position: relative;
-  }
-  
-  #current-split {
-    text-align: center;
-  }
-  
-  .current-workout {
-    margin: auto;
-    text-align: center;
-    display: block;
-    width: 80%;
-    height: fit-content;
-    padding: 10px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .current-workout p {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-    padding: 5px 0;
-  }
-  
-  .current-workout .exercise {
-    flex-grow: 1;
-    text-align: left;
-  }
-  
-  .current-workout .set {
-    margin-right: 10px;
-    text-align: left;
-  }
-  
-  /* 🔥 New button styles */
-  .main-button {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    margin: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .main-button:hover {
-    background-color: rgb(91, 94, 91);
-  }
-  
-  .remove-button {
-    background-color: crimson;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .remove-button:hover {
-    background-color: darkred;
-  }
-  
-  .reccomend {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    width: 60%;
-    margin: 60px auto 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .reccomend h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .reccomend p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  
-  .reccomend_button {
-    background-color: black;
-    font-size: 15px;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .reccomend_button:hover {
-    background-color: rgb(91, 94, 91);
-  }
-  
+.dashboardButtonContainer {
+  display: flex;
+  justify-content: center;
+}
 
-  .workoutsContainer2 {
-    background-color: #f0f0f0;  
-    padding: 20px;             
-    border-radius: 10px;        
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  
-  }
+.workoutsContainer2 {
+  background-color: #f0f0f0;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  min-width: 250px;
+  margin: 30px auto 30px auto;
+  z-index: 10;
+}
+
+
+.search-wrapper > div {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: none !important;
+  border: none !important;
+  background: none !important;
+}
+
+
+.search-wrapper * {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.search-bar-container input {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #ccc !important;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+}
+
+
+.results-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 99;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 5px 5px;
+}
+
+.search-result:first-child {
+  border-top: 1px solid #ccc;
+}
+
+.search-result:last-child {
+  border-bottom: 1px solid #ccc;
+}
+
+#current-split {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+
+
+.current-workout {
+  margin-top: 30px;
+  text-align: center;
+  background-color: #e6e6e6;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.current-workout p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.exercise {
+  font-weight: bold;
+}
+
+.set {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.remove-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.main-button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.reccomend {
+  margin-top: 40px;
+  text-align: center;
+  background-color: #e6e6e6;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.reccomend_button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Workouts.css';
 import NavBar from './NavBar.js';
 import SearchBar from '../SearchBar.js';
-import Weather from './Weather.js';
 import { SearchResultsList } from './SearchResultsList.js';
 import { useRecommendations } from "../Reccomend.js";
 
@@ -45,23 +44,18 @@ const Workouts = () => {
 
   const handleRemove = (index) => {
     setExercises((prevExercises) => {
-      //Remove selected exercise
-      let updated = prevExercises.filter((_,i) => i !== index)
+      let updated = prevExercises.filter((_, i) => i !== index);
 
-      //Ensure at least 3 exercises exist
-      while(updated.length < MIN_EXERCISES) {
-        updated.push(createExercise(updated.length + 1))
+      while (updated.length < MIN_EXERCISES) {
+        updated.push(createExercise(updated.length + 1));
       }
 
-      //Keep selected exercises
-      updated = updated.map((ex,i) => ({
+      updated = updated.map((ex, i) => ({
         ...ex,
         name: ex.name.startsWith("Exercise") ? `Exercise ${i + 1}` : ex.name,
-      }) )
-      return updated
-    })
-
-    
+      }));
+      return updated;
+    });
   };
 
   const handleAddExercise = () => {
@@ -69,22 +63,21 @@ const Workouts = () => {
       name: `Exercise ${exercises.length + 1}`,
       sets: 1,
       reps: 1,
-    }
+    };
 
-    const updated = [...exercises, newExercise]
+    const updated = [...exercises, newExercise];
 
-    //Only renumber default exercises
-    const cleaned = updated.map((ex,i) => ({
+    const cleaned = updated.map((ex, i) => ({
       ...ex,
       name: ex.name?.startsWith("Exercise") ? `Exercise ${i + 1}` : ex.name
-    }))
+    }));
 
-    setExercises(cleaned)
+    setExercises(cleaned);
   };
 
   const handleSave = () => {
     const cleaned = exercises.map(normalizeExercise);
-    localStorage.setItem('exercises', JSON.stringify(exercises));
+    localStorage.setItem('exercises', JSON.stringify(cleaned));
     alert('Workout saved!');
   };
 
@@ -105,40 +98,32 @@ const Workouts = () => {
 
   const updateExerciseName = (name) => {
     setExercises((prevExercises) => {
-      const index = prevExercises.findIndex(ex => ex.name && ex.name.startsWith("Exercise"))
-
-      if (index === -1) return prevExercises
-
-      const updated = prevExercises.map((ex, i) =>
-      i === index ? {...ex, name: name || `Exercise ${i + 1}`} :ex)
-      return updated
-    })
-    
-  }
+      const index = prevExercises.findIndex(ex => ex.name && ex.name.startsWith("Exercise"));
+      if (index === -1) return prevExercises;
+      return prevExercises.map((ex, i) =>
+        i === index ? { ...ex, name: name || `Exercise ${i + 1}` } : ex
+      );
+    });
+  };
 
   return (
-    <div className="workoutsContainer">
-      <h1 id="title">GitFit</h1>
-      <hr />
-      <div className="dashboardButtonContainer"><NavBar /></div>
-      <hr />
+    <div className="workouts-page">
+      <div className="workoutsContainer2">
+        <h1 id="title">GitFit</h1>
+        <div className="dashboardButtonContainer"><NavBar /></div>
+      </div>
 
-      {/* SEARCH BAR */}
-      <div className="search-bar-container">
-        <SearchBar setResults={setResults} />
+      {/* SEARCH SECTION */}
+      <div className="search-wrapper">
+        <div className="search-bar-container">
+          <SearchBar setResults={setResults} />
+        </div>
         <SearchResultsList results={results} updateExerciseName={updateExerciseName} />
       </div>
 
-
-      <br />
-
       {/* CURRENT SPLIT */}
-      <h4 id="current-split">Current Split</h4>
+      <h4 id="current-split" style={{ textAlign: 'center', margin: 0 }}>Current Split</h4>
       <div className="current-workout">
-        <div className="search-bar-container">
-          <SearchBar setResults={setResults} />
-          <SearchResultsList results={results} />
-        </div>
         {exercises.map((exercise, index) => (
           <p key={index}>
             <span className="exercise">{exercise.name}</span>
@@ -167,12 +152,11 @@ const Workouts = () => {
         ))}
 
         <button className="main-button" onClick={handleAddExercise}>+ Add Exercise</button>
-        <hr />
         <button className="main-button" onClick={handleSave}>Save Workout</button>
         <button className="main-button" onClick={handleReset}>Reset</button>
       </div>
 
-        {/* WORKOUT RECOMMENDATIONS*/}
+      {/* RECOMMENDATION SECTION */}
       <div className="reccomend">
         <button
           onClick={handleRecommendation}

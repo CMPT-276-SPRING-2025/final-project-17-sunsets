@@ -65,15 +65,21 @@ const Workouts = () => {
   };
 
   const handleAddExercise = () => {
-    const newExercise = createExercise(exercises.length + 1);
-    const updated = [...exercises, newExercise];
+    const newExercise = {
+      name: `Exercise ${exercises.length + 1}`,
+      sets: 1,
+      reps: 1,
+    }
 
-    const renumbered = updated.map((ex, i) => ({
+    const updated = [...exercises, newExercise]
+
+    //Only renumber default exercises
+    const cleaned = updated.map((ex,i) => ({
       ...ex,
-      name: `Exercise ${i + 1}`,
-    }));
+      name: ex.name?.startsWith("Exercise") ? `Exercise ${i + 1}` : ex.name
+    }))
 
-    setExercises(renumbered);
+    setExercises(cleaned)
   };
 
   const handleSave = () => {

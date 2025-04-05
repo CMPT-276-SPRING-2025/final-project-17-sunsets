@@ -15,7 +15,7 @@ const createExercise = (num) => ({
 });
 
 const normalizeExercise = (ex, index) => ({
-  name: `Exercise ${index + 1}`,
+  name: ex.name || `Exercise ${index + 1}`,
   sets: Number.isInteger(ex.sets) && ex.sets > 0 ? ex.sets : 1,
   reps: Number.isInteger(ex.reps) && ex.reps > 0 ? ex.reps : 1,
 });
@@ -78,7 +78,7 @@ const Workouts = () => {
 
   const handleSave = () => {
     const cleaned = exercises.map(normalizeExercise);
-    localStorage.setItem('exercises', JSON.stringify(cleaned));
+    localStorage.setItem('exercises', JSON.stringify(exercises));
     alert('Workout saved!');
   };
 

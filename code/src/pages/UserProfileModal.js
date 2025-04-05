@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './UserProfileModal.css';
 
+//receives onClose function as a prop
 const UserProfileModal = ({ onClose }) => {
+  //holds user's inputs
   const [formData, setFormData] = useState({
     weight: '',
     heightFt: '',
@@ -10,15 +12,18 @@ const UserProfileModal = ({ onClose }) => {
     stepGoal: ''
   });
 
+  //hook loads data from localStorage when modal mounts
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('userProfile'));
-    if (stored) setFormData(stored);
+    if (stored) setFormData(stored); //pre fill form with saved data
   }, []);
 
+  //handle input changes
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //save profile to localStorage and close modal
   const handleSave = () => {
     localStorage.setItem('userProfile', JSON.stringify(formData));
     localStorage.setItem('stepGoal', formData.stepGoal); // Sync step goal
@@ -60,6 +65,7 @@ const UserProfileModal = ({ onClose }) => {
           />
         </div>
 
+        {/* Gender dropdown */}
         <label>Gender:
           <select
             name="gender"
@@ -82,6 +88,7 @@ const UserProfileModal = ({ onClose }) => {
           />
         </label>
 
+        {/* Save and Cancel buttons */}
         <div className="modal-buttons" style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
           <button className="main-button" onClick={handleSave}>Save</button>
           <button className="main-button" onClick={onClose}>Cancel</button>

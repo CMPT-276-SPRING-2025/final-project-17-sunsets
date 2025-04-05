@@ -5,8 +5,10 @@ import { useWeatherCity } from '../WeatherCity.js';
 
 function Weather() {
   const { city, setCity, weather, error, isLoading } = useWeatherCity();
+  //local state for user input in search field
   const [query, setQuery] = useState('');
 
+  //handles form submission when user searches for a city
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim()) {
@@ -19,16 +21,13 @@ function Weather() {
 
     
     <div className="weather-page">
-
+      {/* Top container with title and navigation */}
       <div className="workoutsContainer2"> 
         <h1 id="title">GitFit</h1>
-    
         <div className="dashboardButtonContainer"><NavBar /></div>
       </div>
       
-
-
-      
+      {/* City search input form */}
       <form onSubmit={handleSubmit} className="search-bar-container">
         <input
           type="text"
@@ -42,9 +41,11 @@ function Weather() {
         </button>
       </form>
 
+      {/* Error message if something went wrong with the fetch */}
       {error && <div className="error-message">Error: {error}. Please enter a valid location with the provided format.</div>}
       {isLoading && <div className="loading-message">Loading...</div>}
 
+      {/* Loading state shown while fetching weather */}
       {weather && !isLoading && (
         <div className="weather-info-container">
           <h2>Weather in {weather.name}</h2>

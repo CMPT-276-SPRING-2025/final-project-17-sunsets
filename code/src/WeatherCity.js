@@ -8,8 +8,6 @@ export const WeatherCityProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  //fetches weather, and provides context and magnes the weather fetching logic for rest of app
-  //goal of this file is to ensure that across all files that the weather is the same
   const fetchWeather = async (city) => {
     setIsLoading(true);
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;

@@ -21,7 +21,6 @@ const WelcomeModal = ({ onClose }) => {
           <p>Navigate to the weathers page and update your location to get local weather based workouts</p>
         </div>
 
-        {/* Dismiss modal button */}
         <div className="modal-buttons" style={{ textAlign: 'center', marginTop: '20px' }}>
           <button className="main-button" onClick={onClose}>Got it!</button>
         </div>

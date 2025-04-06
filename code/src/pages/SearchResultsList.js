@@ -1,9 +1,9 @@
 import React from 'react'
 import "./SearchResultsList.css"
 import { SearchResults } from './SearchResult.js'
+
 export const SearchResultsList = ({results, updateExerciseName}) => {
     return (
-    //conntainer div for list of results
     <div className="results-list">
             {
                 results.map((result, id) => {

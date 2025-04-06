@@ -6,13 +6,11 @@ import UserProfileModal from './UserProfileModal.js';
 import WelcomeModal from './WelcomeModal.js';
 
 function NavBar() {
-  //visibilty of profile and welcome modals
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
   return (
     <>
-    {/* nav bar container styling*/}
       <nav style={{ display: 'flex', alignItems: 'center' }}>
         <ul
           style={{

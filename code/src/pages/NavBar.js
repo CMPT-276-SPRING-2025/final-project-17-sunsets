@@ -32,7 +32,6 @@ function NavBar() {
             />
           </li>
 
-          {/* Navigation buttons center-right */}
           <li>
             <Link to="/">
               <Button name="Dashboard" />

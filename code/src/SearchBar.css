@@ -17,7 +17,6 @@ input {
     text-align: center;
 }
 
-/*Remove outline when hovering over searchbar*/
 input:focus {
     outline: none;
 }

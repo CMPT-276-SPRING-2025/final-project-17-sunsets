@@ -25,17 +25,19 @@ const SemicircleProgressBar = ({ text }) => {
 
     const lastUpdatedDay = localStorage.getItem('lastUpdatedDay');
 
+     // If the day has changed since last update
     if (lastUpdatedDay !== currentDay) {
       localStorage.setItem('lastUpdatedDay', currentDay);
 
+      // Reset entire week on Monday
       if (currentDay === 'Mon') {
-        // Reset full week on Monday
         const resetWeek = {
           Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0,
         };
         localStorage.setItem('weeklySteps', JSON.stringify(resetWeek));
         setSteps(0);
       } else {
+        // Reset just today’s steps
         weeklySteps[currentDay] = 0;
         localStorage.setItem('weeklySteps', JSON.stringify(weeklySteps));
         setSteps(0);
@@ -48,7 +50,7 @@ const SemicircleProgressBar = ({ text }) => {
   // Calculate percentage
   const value = goal > 0 ? (steps / goal) * 100 : 0;
 
-  // Step update handler
+  // Step update handler for when user adds steps
   const setStepsHelper = () => {
     const additionalSteps = Number(inputValue);
   
@@ -65,6 +67,7 @@ const SemicircleProgressBar = ({ text }) => {
     setInputValue('');
   };
 
+  //styling for progress bar, input and button
   const style = {
     path: { stroke: '#1f1a1a' },
     trail: { stroke: '#d6d6d6' },

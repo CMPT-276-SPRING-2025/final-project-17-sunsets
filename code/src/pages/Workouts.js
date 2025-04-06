@@ -7,12 +7,15 @@ import { useRecommendations } from "../Reccomend.js";
 
 const MIN_EXERCISES = 3;
 
+//create blank new exercise
 const createExercise = (num) => ({
   name: `Exercise ${num}`,
   sets: 1,
   reps: 1,
 });
 
+
+//ensure exercise data is valid
 const normalizeExercise = (ex, index) => ({
   name: ex.name || `Exercise ${index + 1}`,
   sets: Number.isInteger(ex.sets) && ex.sets > 0 ? ex.sets : 1,
@@ -25,10 +28,12 @@ const Workouts = () => {
   const [recommendation, setRecommendation] = useState(null);
   const { getRecommendations, isLoading, error } = useRecommendations();
 
+  //load workout from localStorage on first render
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('exercises'));
     let loadedExercises = Array.isArray(stored) ? stored.map(normalizeExercise) : [];
 
+    //default exercises
     if (loadedExercises.length === 0) {
       loadedExercises = Array.from({ length: MIN_EXERCISES }, (_, i) => createExercise(i + 1));
     }
@@ -36,12 +41,14 @@ const Workouts = () => {
     setExercises(loadedExercises);
   }, []);
 
+  // Handles input change for sets/reps
   const handleChange = (index, field, value) => {
     const updated = [...exercises];
     updated[index][field] = parseInt(value);
     setExercises(updated);
   };
 
+  // Removes an exercise and ensures minimum of 3 remain
   const handleRemove = (index) => {
     setExercises((prevExercises) => {
       let updated = prevExercises.filter((_, i) => i !== index);
@@ -58,6 +65,7 @@ const Workouts = () => {
     });
   };
 
+  // Adds a new exercise to the workout
   const handleAddExercise = () => {
     const newExercise = {
       name: `Exercise ${exercises.length + 1}`,
@@ -75,35 +83,28 @@ const Workouts = () => {
     setExercises(cleaned);
   };
 
+  // Saves current workout to localStorage
   const handleSave = () => {
     const cleaned = exercises.map(normalizeExercise);
     localStorage.setItem('exercises', JSON.stringify(cleaned));
     alert('Workout saved!');
   };
 
+  // Resets workout to default 3 exercises
   const handleReset = () => {
     const defaults = Array.from({ length: MIN_EXERCISES }, (_, i) => createExercise(i + 1));
     setExercises(defaults);
     localStorage.removeItem('exercises');
   };
 
+  // Calls recommendation hook to get new suggestion
   const handleRecommendation = async () => {
     try {
       const result = await getRecommendations();
       setRecommendation(result);
     } catch (error) {
-      console.error("Error fetching recommendation:", error);
+      
     }
-  };
-
-  const updateExerciseName = (name) => {
-    setExercises((prevExercises) => {
-      const index = prevExercises.findIndex(ex => ex.name && ex.name.startsWith("Exercise"));
-      if (index === -1) return prevExercises;
-      return prevExercises.map((ex, i) =>
-        i === index ? { ...ex, name: name || `Exercise ${i + 1}` } : ex
-      );
-    });
   };
 
   return (
@@ -113,17 +114,17 @@ const Workouts = () => {
         <div className="dashboardButtonContainer"><NavBar /></div>
       </div>
 
-      {/* SEARCH SECTION */}
-      <div className="search-wrapper">
+
+      <br />
+
+      {/* Current Exercises */}
+      <h2 id="current-split">Current Split</h2>
+      <div className="current-workout">
         <div className="search-bar-container">
           <SearchBar setResults={setResults} />
         </div>
-        <SearchResultsList results={results} updateExerciseName={updateExerciseName} />
-      </div>
 
-      {/* CURRENT SPLIT */}
-      <h4 id="current-split" style={{ textAlign: 'center', margin: 0 }}>Current Split</h4>
-      <div className="current-workout">
+        {/* List of exercises with dropdowns */}
         {exercises.map((exercise, index) => (
           <p key={index}>
             <span className="exercise">{exercise.name}</span>
@@ -151,12 +152,13 @@ const Workouts = () => {
           </p>
         ))}
 
+        {/* Buttons below workout */}
         <button className="main-button" onClick={handleAddExercise}>+ Add Exercise</button>
         <button className="main-button" onClick={handleSave}>Save Workout</button>
         <button className="main-button" onClick={handleReset}>Reset</button>
       </div>
 
-      {/* RECOMMENDATION SECTION */}
+      {/* Recommendation section to display reccomendations */}
       <div className="reccomend">
         <button
           onClick={handleRecommendation}
@@ -172,7 +174,8 @@ const Workouts = () => {
         {recommendation && !isLoading && !error && (
           <>
             <p><strong>Weather:</strong> {recommendation.weather}</p>
-            <p><strong>Workout:</strong> {recommendation.recommendedWorkout}</p>
+            <p><strong>Workout:</strong> {recommendation.recommendedWorkout.join(", ")}</p>
+
             <p><strong>Clothing:</strong> {recommendation.recommendedClothing.join(", ")}</p>
           </>
         )}

@@ -10,6 +10,7 @@ import WelcomeModal from './pages/WelcomeModal.js';
 function App() {
   const [showWelcome, setShowWelcome] = useState(false);
 
+  // Check if the user has already seen the welcome modal using localStorage
   useEffect(() => {
     const hasSeen = localStorage.getItem('hasSeenWelcome');
     if (!hasSeen) {
@@ -19,10 +20,13 @@ function App() {
   }, []);
 
   return (
+    // Provide weather data context to the entire app
     <WeatherCityProvider>
       <Router>
         <div className="app-container">
+          {/* Show welcome modal if it's the user's first visit */}
           {showWelcome && <WelcomeModal onClose={() => setShowWelcome(false)} />}
+          {/* Show temperature information at the top */}
           <WeatherInfo />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -35,6 +39,7 @@ function App() {
   );
 }
 
+// Displays current weather info using the weather context
 function WeatherInfo() {
   const { weather, isLoading } = useWeatherCity();
 

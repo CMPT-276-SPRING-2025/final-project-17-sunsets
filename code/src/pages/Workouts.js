@@ -158,7 +158,7 @@ const Workouts = () => {
         <button className="main-button" onClick={handleReset}>Reset</button>
       </div>
 
-      {/* Recommendation section */}
+      {/* Recommendation section to display reccomendations */}
       <div className="reccomend">
         <button
           onClick={handleRecommendation}

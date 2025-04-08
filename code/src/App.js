@@ -9,6 +9,7 @@
  * - Wraps components in WeatherCityProvider context for global weather access.
  * - Displays current weather info in the header from the shared context.
  * 
+ * 
  * Pages:
  * - "/"        → Home page
  * - "/about"   → Workouts page (should ideally be "/workouts" for clarity)

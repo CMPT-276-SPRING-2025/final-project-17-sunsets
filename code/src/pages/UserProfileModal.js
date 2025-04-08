@@ -1,7 +1,22 @@
+/**
+ * UserProfileModal Component
+ * --------------------------
+ * A modal that allows users to input and save basic profile data:
+ * weight, height (in feet and inches), gender, and step goal.
+ * 
+ * Features:
+ * - Loads saved profile data from localStorage (if available)
+ * - Allows editing and saving of profile info
+ * - Saves data to localStorage and refreshes page on save
+ * 
+ * Props:
+ * - onClose (function): Callback to close the modal
+ */
 import React, { useState, useEffect } from 'react';
 import './UserProfileModal.css';
 
 const UserProfileModal = ({ onClose }) => {
+  // State for user input form
   const [formData, setFormData] = useState({
     weight: '',
     heightFt: '',
@@ -10,15 +25,18 @@ const UserProfileModal = ({ onClose }) => {
     stepGoal: ''
   });
 
+  // Load existing user profile from localStorage on mount
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('userProfile'));
     if (stored) setFormData(stored);
   }, []);
 
+  //handle input field changes
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Save profile to localStorage and close modal
   const handleSave = () => {
     localStorage.setItem('userProfile', JSON.stringify(formData));
     localStorage.setItem('stepGoal', formData.stepGoal); // Sync step goal

@@ -1,3 +1,17 @@
+/**
+ * WelcomeModal Component
+ * -----------------------
+ * A modal that provides a brief guide to new users about the app's features and functionality.
+ * The modal provides step-by-step instructions on how to:
+ * 1. Add user information
+ * 2. Set step goals
+ * 3. Create workouts
+ * 4. Add local weather data for personalized workouts
+ * 
+ * Props:
+ * - onClose (function): A callback function to close the modal
+ * 
+ */
 import React from 'react';
 import './UserProfileModal.css'; // Reuse same styling
 
@@ -21,6 +35,7 @@ const WelcomeModal = ({ onClose }) => {
           <p>Navigate to the weathers page and update your location to get local weather based workouts</p>
         </div>
 
+        {/* Close button */}
         <div className="modal-buttons" style={{ textAlign: 'center', marginTop: '20px' }}>
           <button className="main-button" onClick={onClose}>Got it!</button>
         </div>

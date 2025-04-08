@@ -1,3 +1,19 @@
+/**
+ * NavBar Component
+ * ----------------
+ * This navigation bar provides links to different sections of the GitFit app,
+ * along with icons for user profile access and usage instructions.
+ * 
+ * Features:
+ * - Navigation buttons: Dashboard, Workouts, Weather
+ * - Left icon: Opens the user profile modal
+ * - Right icon: Opens the welcome/instructions modal
+ * 
+ * Components Used:
+ * - Button: Custom styled button component
+ * - UserProfileModal: Modal showing user profile
+ * - WelcomeModal: Modal with app instructions
+ */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button.js';

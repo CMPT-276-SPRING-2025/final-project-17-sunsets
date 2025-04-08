@@ -1,9 +1,25 @@
+/**
+ * Home Component
+ * --------------
+ * This is the main homepage for the GitFit app.
+ * It includes:
+ * - A title and navigation bar
+ * - A semicircle step progress indicator
+ * - A weekly steps graph
+ *
+ * Components Used:
+ * - NavBar: Navigation bar for app pages
+ * - SemicircleProgressBar: Shows current step count progress
+ * - StepChart: Displays a chart of weekly step counts
+ */
+
 import React from 'react';
 import './Home.css'; 
 import NavBar from './NavBar.js'; 
 import SemicircleProgressBar from '../StepsGraph.js'; 
 import StepChart from "../StepsChart.js";
 
+// Functional Home component
 const Home = () => {
   return (
     <>

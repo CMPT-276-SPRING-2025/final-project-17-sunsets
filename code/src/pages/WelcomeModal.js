@@ -22,24 +22,24 @@ const WelcomeModal = ({ onClose }) => {
         <h2>Welcome to GitFit!</h2>
 
         <div>
-          <h3>1. Add your Info</h3>
-          <p>Navigate to the user icon on the left hand side and enter your information their</p>
+          <h3>1. Add Your Info</h3>
+          <p>Click the user icon on the left-hand side and enter your information there.</p>
 
           <h3>2. Set Your Goals</h3>
-          <p>In your profile section you can update the amount of steps you'd like to walk daily</p>
+          <p>In your profile section, you can update the number of steps you'd like to walk daily.</p>
 
-          <h3>3. Make your workouts</h3>
-          <p>Navigate to the workouts page and create a workout catered to your needs</p>
+          <h3>3. Create Your Workouts</h3>
+          <p>Navigate to the Workouts page and create a workout tailored to your needs.</p>
 
-          <h3>4. Add your local weather</h3>
-          <p>Navigate to the weathers page and update your location to get local weather based workouts</p>
+          <h3>4. Add Your Local Weather</h3>
+          <p>Navigate to the Weather page and update your location to get weather-based workout suggestions.</p>
         </div>
 
         {/* Close button */}
         <div className="modal-buttons" style={{ textAlign: 'center', marginTop: '20px' }}>
           <button className="main-button" onClick={onClose}>Got it!</button>
         </div>
-
+        
       </div>
     </div>
   );

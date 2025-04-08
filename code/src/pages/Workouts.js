@@ -206,7 +206,7 @@ const Workouts = () => {
         {recommendation && !isLoading && !error && (
           <>
             <p><strong>Weather:</strong> {recommendation.weather}</p>
-            <p><strong>Workout:</strong> {recommendation.recommendedWorkout}</p>
+            <p><strong>Workout:</strong> {recommendation.recommendedWorkout.join(", ")}</p>
             <p><strong>Clothing:</strong> {recommendation.recommendedClothing.join(", ")}</p>
           </>
         )}

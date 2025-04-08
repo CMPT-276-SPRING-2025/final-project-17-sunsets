@@ -1,3 +1,14 @@
+/**
+ * StepChart.js
+ *
+ * A responsive bar chart that displays the user's step count per day of the week.
+ * It pulls data from `localStorage` (key: "weeklySteps") and refreshes it every second.
+ *
+ * - Each bar represents steps taken on one weekday.
+ * - Uses Recharts for charting.
+ * - Updates dynamically using `setInterval` within a `useEffect` hook.
+ */
+
 import React, { useState, useEffect } from "react";
 import {
   BarChart,
@@ -10,13 +21,16 @@ import {
 } from "recharts";
 
 const StepChart = () => {
+  // Initialize data with all days set to 0 steps
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [data, setData] = useState(
     dayNames.map(day => ({ name: day, steps: 0 }))
   );
 
+  // Fetch stored weekly step data from localStorage
   const refreshData = () => {
     const storedWeekly = localStorage.getItem('weeklySteps');
+     // If no data exists, default to 0 steps for each day
     const weeklySteps = storedWeekly 
       ? JSON.parse(storedWeekly)
       : { Sun: 0, Mon: 0, Tue: 0, Wed: 0, Thu: 0, Fri: 0, Sat: 0 };

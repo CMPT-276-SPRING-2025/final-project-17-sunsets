@@ -1,5 +1,26 @@
+/**
+ * recommendations.js
+ * 
+ * Exports clothing and workout recommendations based on current weather.
+ * 
+ * - `clothingOptions`: Maps weather conditions to sets of clothing options.
+ * - `getClothingRecommendation(condition)`: Picks a random clothing set based on weather condition.
+ * - `workoutMapping`: Maps temperature ranges to Wger workout category IDs.
+ * - `useRecommendations()`: Custom React hook that:
+ *    - Fetches weather using `useWeatherCity`
+ *    - Returns clothing and workout recommendations
+ *    - If temp > 20°C, suggests outdoor activities
+ *    - Else, fetches indoor exercises from Wger API
+ * 
+ * Notes:
+ * - Uses OpenWeatherMap and Wger APIs
+ * - Requires valid `REACT_APP_WGER_API_KEY` in `.env`
+ * - Indoor exercises use category ID mapping via `workoutMapping`
+ */
 import { useWeatherCity } from './WeatherCity.js';
 
+
+// Outfit suggestions based on weather condition
 export const clothingOptions = {
     clear: [
         ["T-shirt", "Shorts", "Sunglasses"],
@@ -43,6 +64,7 @@ export const clothingOptions = {
     ]
 };
 
+// Picks one outfit array based on weather condition
 export const getClothingRecommendation = (weatherCondition) => {
     const normalizedCondition = weatherCondition.toLowerCase();
     const options = clothingOptions[normalizedCondition] || [["Standard activewear"]];
@@ -50,6 +72,7 @@ export const getClothingRecommendation = (weatherCondition) => {
     return options[randomSetIndex];
 };
 
+// Maps temperature range to workout category ID
 export const workoutMapping = [
     { min: -100, max: 5, category: 8 },
     { min: 6, max: 15, category: 9 },
@@ -57,6 +80,7 @@ export const workoutMapping = [
     { min: 26, max: 100, category: 15 }
 ];
 
+// Custom React hook that returns workout and clothing suggestions
 export const useRecommendations = () => {
     const { weather, isLoading: weatherLoading, error: weatherError } = useWeatherCity();
 
@@ -72,6 +96,7 @@ export const useRecommendations = () => {
             return { message: "Incomplete weather data." };
         }
 
+        // Get outfit suggestion
         const recommendedClothing = getClothingRecommendation(condition);
         let recommendedWorkout = [];
         let workoutEnvironment = "";
@@ -94,6 +119,7 @@ export const useRecommendations = () => {
                 }
             }
 
+            //api fetch for category variable
             const API_KEY = process.env.REACT_APP_WGER_API_KEY;
             try {
                 const response = await fetch(`https://wger.de/api/v2/exercise/?category=${workoutCategory}&language=2&limit=100`, {
@@ -124,15 +150,17 @@ export const useRecommendations = () => {
                 }
 
             } catch (error) {
-                console.error("Error fetching workouts:", error);
+                
                 recommendedWorkout = ["Error fetching workouts."];
             }
 
+             // If weather is bad, suggest staying indoors. Failsafe for dangerous weather
             workoutEnvironment = ["rain", "snow", "thunderstorm", "drizzle"].includes(condition)
                 ? "Indoor workout recommended due to weather."
                 : "Outdoor activity possible, dress appropriately.";
         }
 
+        //return statement which is used in workout.js
         return {
             weather: `Temperature: ${Math.round(temperature)}°C, Condition: ${condition}`,
             recommendedWorkout,

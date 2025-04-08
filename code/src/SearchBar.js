@@ -1,3 +1,16 @@
+/**
+ * SearchBar.js
+ *
+ * A search input component that queries the Wger Exercise Alias API.
+ * Displays matching exercise names (alias-based) as the user types.
+ *
+ * Props:
+ * - setResults: function to update the parent component's state with filtered results
+ *
+ * Notes:
+ * - Uses Wger's public exercise alias API (no API key needed)
+ * - Handles lowercase filtering on the frontend
+ */
 import React, {useState} from "react"
 import {FaSearch} from "react-icons/fa"
 import "./SearchBar.css"

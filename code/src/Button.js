@@ -1,9 +1,26 @@
+/**
+ * Button.js
+ * 
+ * A reusable styled button component for GitFit.
+ * 
+ * Props:
+ * - name (string): The text to display inside the button. Default is "Button".
+ * - onClick (function): Callback function when button is clicked. Default is an empty function.
+ * 
+ * Styling:
+ * - Black background, white text
+ * - Rounded corners (pill-style)
+ * - Slight padding and pointer cursor on hover
+ * 
+ * Notes:
+ * - Uses PropTypes for type checking and default props.
+ */
 import React from "react-router-dom";
 import propTypes from 'prop-types'
 
 
 const Button = (props) => {
-    console.log("Button rendered"); 
+    
 
     const styles = {
         backgroundColor: "black",

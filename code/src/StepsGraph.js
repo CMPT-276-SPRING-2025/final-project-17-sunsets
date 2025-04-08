@@ -1,3 +1,14 @@
+/**
+ * SemicircleProgressBar.js
+ * 
+ * A semicircular step tracker that shows daily step progress vs. goal.
+ * - Pulls from and writes to `localStorage` for persistence.
+ * - Resets daily step count automatically each day.
+ * - Resets the entire week's steps every Monday.
+ * - Users can manually input additional steps.
+ * 
+ * Uses react-circular-progressbar for the progress display.
+ */
 import React, { useState, useEffect } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -25,6 +36,7 @@ const SemicircleProgressBar = ({ text }) => {
 
     const lastUpdatedDay = localStorage.getItem('lastUpdatedDay');
 
+    // If the stored day is not today, update or reset as needed
     if (lastUpdatedDay !== currentDay) {
       localStorage.setItem('lastUpdatedDay', currentDay);
 
@@ -65,6 +77,7 @@ const SemicircleProgressBar = ({ text }) => {
     setInputValue('');
   };
 
+  //styles for progress bar and UI
   const style = {
     path: { stroke: '#1f1a1a' },
     trail: { stroke: '#d6d6d6' },

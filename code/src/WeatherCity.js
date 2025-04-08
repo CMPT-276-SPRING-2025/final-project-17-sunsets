@@ -1,13 +1,24 @@
+/**
+ * WeatherCityContext.js
+ * 
+ * Provides weather data and city state globally via React Context.
+ * - Fetches weather data using OpenWeatherMap API based on the current city.
+ * - Exposes `city`, `setCity`, `weather`, `error`, and `isLoading` to consumers.
+ * - Fetches new weather data whenever the city changes.
+ */
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const WeatherCityContext = createContext();
 
+// WeatherCityProvider wraps children and supplies them with weather-related state
 export const WeatherCityProvider = ({ children }) => {
   const [city, setCity] = useState('Vancouver');
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+   // Fetch weather data from OpenWeatherMap API
   const fetchWeather = async (city) => {
     setIsLoading(true);
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
@@ -30,6 +41,7 @@ export const WeatherCityProvider = ({ children }) => {
   };
 
  
+  // Re-fetch weather whenever the city changes
   useEffect(() => {
     fetchWeather(city);
   }, [city]);
@@ -47,4 +59,5 @@ export const WeatherCityProvider = ({ children }) => {
   );
 };
 
+// Custom hook to access weather context from any component
 export const useWeatherCity = () => useContext(WeatherCityContext);

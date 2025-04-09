@@ -19,6 +19,10 @@ Once you have all your dependencies installed and your are in the code folder, p
 # 3. HOW TO USE
 Once on the home page and follow the introduction modal. It will guide you on how to use the website. You can add steps, create a workout, or get a recommended workout by using the reccomendations. Addtionaly updated your location so you can get local weather data and workouts based around the weather.
 
+
+
+
+
 [MileStone1-report](https://github.com/CMPT-276-SPRING-2025/final-project-17-sunsets/blob/main/docs/Milestone%201/Milestone-1-report.pdf)
 [Milestone1 video](https://www.youtube.com/watch?v=MTb0NmWUl1g)
 

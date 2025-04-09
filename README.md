@@ -10,10 +10,11 @@ Description: GitFit is a fitness app that offers users personalized workout plan
 
 
 # 1. HOW TO INSTALL
-Please clone the repo, once the repo is cloned to your local machine please navigate/CD into the code folder and in your command line please run npm install. Once this is done you may move onto the next steps
+Please clone the repo using git clone, git clone git@github.com:CMPT-276-SPRING-2025/final-project-17-sunsets.git
+Once the repo is cloned on your local machine please navigate/CD into the code folder and in your command line please run npm install. Once this is done you may move onto the next steps
 
 # 2. HOW TO RUN
-Once you have all your dependencies installed and your are in the code folder, please do npm start. This will start a local instance of the project. From here you can move onto the next step
+Once you have all your dependencies installed and your are in the code folder, please do npm start. This will start a local instance of the project. Or you can go to the website link above. From here you can move onto the next step.
 
 # 3. HOW TO USE
-
+Once on the home page and follow the introduction modal. It will guide you on how to use the website. You can add steps, create a workout, or get a recommended workout by using the reccomendations. Addtionaly updated your location so you can get local weather data and workouts based around the weather.

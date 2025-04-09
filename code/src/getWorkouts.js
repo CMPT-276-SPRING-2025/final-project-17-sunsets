@@ -13,7 +13,7 @@
 
 export const getWorkouts = async () => {
     const API_KEY = process.env.REACT_APP_WGER_API_KEY;
-    const url = `https://wger.de/api/v2/exercise/?language=2`;  
+    const url = `https://wger.de/api/v2/exercise/?language=2/limit=50`;  
     
     
     try {

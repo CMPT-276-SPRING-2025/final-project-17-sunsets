@@ -4,7 +4,7 @@
 
 Project Name: GitFit – Workout Tracker App
 
-Members: Aluse Zhou, Harman Bhogal, Gurjot Mahay, & Jagraj Gill
+
 
 Description: GitFit is a fitness app that offers users personalized workout plans and nutriton tracking. It allows users to monitor caloric intake and create workouts around there schedule. GitFit wants to make sure that your goals become reality.
 
@@ -20,14 +20,4 @@ Once you have all your dependencies installed and your are in the code folder, p
 Once on the home page and follow the introduction modal. It will guide you on how to use the website. You can add steps, create a workout, or get a recommended workout by using the reccomendations. Addtionaly updated your location so you can get local weather data and workouts based around the weather.
 
 
-
-
-
-[MileStone1-report](https://github.com/CMPT-276-SPRING-2025/final-project-17-sunsets/blob/main/docs/Milestone%201/Milestone-1-report.pdf)
-[Milestone1 video](https://www.youtube.com/watch?v=MTb0NmWUl1g)
-
-[MileStone1.5 report](https://github.com/CMPT-276-SPRING-2025/final-project-17-sunsets/blob/main/docs/Milestone1-5/Milestone%201.5.pdf)
-
-[MileStone2](https://github.com/CMPT-276-SPRING-2025/final-project-17-sunsets/blob/main/docs/Milestone2/Milestone2.pdf)
-[Milestone2 video](https://drive.google.com/file/d/1VO2Um43qjgjsNC_ypXilwQIEg7I8B7XZ/view)
 
